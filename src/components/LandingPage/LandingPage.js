@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 import bannerImage from './banner_image.png'
 import { useEffect, useState } from 'react';
 import axios from '../../common/axiosInstance';
-import { Link } from 'react-router-dom';
 
 export default function LandingPage() {
 
@@ -17,10 +16,14 @@ export default function LandingPage() {
                 if(res.status === 200) {
                     setCoupons(JSON.parse(res.data));
                 }
+                else{
+                    console.log("No data")
+                }
             })
         }
 
         fetchCoupons();
+        console.log(coupons);
     }, [])
 
     
@@ -39,12 +42,12 @@ export default function LandingPage() {
         <p>Coupon codes you’ll love</p>
         <Box className="feature-coupons-parent">
             <Box className="featured-coupons">
-                {coupons.map((coupon, key) => 
-                    <LandingPageCard key={key} couponId={coupon.ID} couponName={coupon.NAME} couponImage={coupon.URL} couponPrice={coupon.PRICE}/>
+                {coupons.map((coupon) => 
+                    <LandingPageCard couponId={coupon.ID} couponName={coupon.NAME} couponImage={coupon.URL} couponPrice={coupon.PRICE}/>
                 )}
             </Box>
         </Box>
-        <Button variant="outlined" className="primary-button"><Link to='/discover'>View More</Link></Button>
+        <Button variant="outlined" className="primary-button">View More</Button>
         <Box className='vector-box'>
             <Button size="large" variant="outlined" className="primary-button sell">Sell your coupon</Button>
         </Box>

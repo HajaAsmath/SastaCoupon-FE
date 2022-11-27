@@ -2,10 +2,13 @@ import React from "react";
 import "./ProdDet.css";
 import Logo from "./Indigo.png"
 import { Box } from "@mui/material";
-import { Routes, Route, useNavigate,useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import { CountertopsRounded } from "@mui/icons-material";
+import { AuthProvider, useAuth } from "../../Context/AuthProvider";
+import Profile from "../Profile/Profile";
+import { BACKEND_BASE_URL } from "../../constants/Constants";
 const __DEV__ = document.domain === 'localhost';   // need to change while deploying"
 
 function loadScript(src) {
@@ -27,6 +30,13 @@ function loadScript(src) {
 
 export default function ProdDet(props) {
 
+
+  const baseURL = BACKEND_BASE_URL;
+  const path = '/razorpay';
+  const path1 = '/proddet'
+  const fullUrl = baseURL.concat(path);
+  const fullUrl1 = baseURL.concat(path1);
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -43,6 +53,7 @@ export default function ProdDet(props) {
       state: obj
     })
   };
+  let auth = useAuth();
   const [coupon, setcoupon] = useState({
     ID: '',
     NAME: '',
@@ -52,7 +63,7 @@ export default function ProdDet(props) {
     SELLER_ID: '',
     BUYER_ID: '',
     COUPON_CODE: '',
-    NAME:'',
+    NAME: '',
 
   });
   //*********************Razorpay Integration********************************* */
@@ -66,18 +77,27 @@ export default function ProdDet(props) {
       return
     }
 
-    const data = await axios
-      .post(`http://localhost:1347/razorpay?`, {
-       id: location.state.couponId ,
-       amount:coupon.PRICE,
-       coupon_id:coupon.ID,
-      }).then((t) =>{
-      console.log(t);
-     return  t.data
+
+    console.log(location.state);
+    let buyer_id;
+    if (coupon.BUYER_ID == null) {
+      buyer_id = '10'
+    } else {
+      buyer_id = location.state.user_id;
     }
-    )   
+    const data = await axios
+      .post(fullUrl, {
+        id: buyer_id,
+        amount: coupon.PRICE,
+        coupon_id: coupon.ID,
+      }).then((t) => {
+        console.log(t);
+        return t.data;
+      }
+      )
 
     console.log(data);
+
     const options = {
       key: __DEV__ ? 'rzp_test_NpKUjWehxc13rP' : 'PRODUCTION_KEY',              // need to change while deploying"
       currency: data.currency,
@@ -85,10 +105,10 @@ export default function ProdDet(props) {
       order_id: data.id,
       name: 'SastaCoupon',
       description: 'Buy and Sell Coupons',
-      image: './Indigo.png',
+      image: 'https://i.postimg.cc/Qx7Fm4sm/Logo.png',
       handler: function (response) {
-        
-       console.log(response);
+
+        console.log(response);
         let obj = {
           "transaction_id": response.razorpay_payment_id,
           "order_id": response.razorpay_order_id,
@@ -107,7 +127,7 @@ export default function ProdDet(props) {
     }
     const paymentObject = new window.Razorpay(options)
     paymentObject.open()
-    paymentObject.on('payment.failed', function (response){
+    paymentObject.on('payment.failed', function (response) {
       alert(response.error.code);
       alert(response.error.description);
       alert(response.error.source);
@@ -116,23 +136,34 @@ export default function ProdDet(props) {
       alert(response.error.metadata.order_id);
       alert(response.error.metadata.payment_id);
       let obj1 = {
-        "transaction_id":response.error.metadata.payment_id,
-        "order_id":response.error.metadata.order_id,
-        "desc":response.error.description,
+        "transaction_id": response.error.metadata.payment_id,
+        "order_id": response.error.metadata.order_id,
+        "desc": response.error.description,
       }
-       navigateTofail(obj1);
-       
-});
+      navigateTofail(obj1);
+
+    });
   }
   let value1 = {};
+  let coup_id;
   //*********************************Fetching Coupon Details**************************************/
-
-  let coup_id = 1242;
+  //console.log(location.state.couponId)
+  console.log(location.state)
+  if (location.state == null) {
+    coup_id = 1247;
+  } else {
+    coup_id = location.state.couponId;
+  }
   useEffect(() => {
     console.log("Inside PRodetais Useeefeect");
 
+    if (auth.getCurrentUser()) {
+    } else {
+      navigate('/logIn')
+    }
+
     axios
-      .get(`http://127.0.0.1:1347/proddet?`, {
+      .get(fullUrl1, {
         params: { id: coup_id },
       })
       .then(
@@ -153,8 +184,9 @@ export default function ProdDet(props) {
             "SELLER_ID": res.data.SELLER_ID,
             "URL": res.data.URL,
             "COUPON_CODE": res.data.COUPON_CODE,
-            "NAME":res.data.NAME,
+            "NAME": res.data.NAME,
           }
+
           console.log(value1);
           console.log(res.data.SELLER_ID)
 
@@ -164,7 +196,6 @@ export default function ProdDet(props) {
           }));
 
           console.log(coupon)
-
 
 
         }
@@ -192,6 +223,7 @@ export default function ProdDet(props) {
             merchants.</li>
         </Box>
       </div>
+
       <div className="coupon">
         <div className="couponitem">
           <label className="label">Coupon Id  </label>

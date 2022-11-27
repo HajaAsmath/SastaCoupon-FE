@@ -2,7 +2,7 @@
   "name": "sastacoupon",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://hajaasmath.github.io/SastaCoupon-FE",
+  "homepage": "http://milind220397.github.io/SastaCouponFrontEnd",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
