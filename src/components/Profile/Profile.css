@@ -1,0 +1,170 @@
+.mainbox{
+  
+    margin: 50px auto;
+    box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.10);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main2{
+      
+         display: flex;
+         
+         justify-content: center;
+         left: 0;
+         top: 25%;
+         width: 100%;
+         
+         
+}
+
+.profile1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    /* height: 100%;  */
+   
+   
+}
+
+.profile2 {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    width: 70%;
+
+    border-radius: 25px;
+}
+
+.profile21{
+    position: relative;
+    
+    display:flex;
+    flex-wrap: wrap;
+    background-color: white;
+}
+.profile22{
+    position: relative;
+    display:flex;
+    flex-wrap: wrap;
+   
+    background-color: white;
+}
+.fullname{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    /* height:20%; */
+    
+}
+
+.fullname1{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    margin: auto;
+   
+}
+
+.button{
+    position: relative;
+    width:10%; 
+    /* top:5%; */
+    left: 37%; 
+    font-weight: bolder;
+    font-size: larger;
+    background-color: #3C286D;
+    color: white;
+    border-radius: 25px;
+    padding: 1%;
+   
+   
+    
+}
+
+
+
+.perinfo{
+    position: relative;
+    top: 0%;
+   
+    width:100%;
+    text-align: left;
+    font-size:large;
+    color: rgb(7, 7, 77);
+    font-weight: bolder;
+    
+}
+.perinfo1{
+    position: relative;
+  
+   
+    width:100%;
+    text-align: left;
+    font-size:large;
+    color: rgb(7, 7, 77);
+    font-weight: bolder;
+    
+}
+
+.fullname11{
+    position: relative;
+    text-align: left;
+    top:10%;
+    width:80%;
+    color: rgb(7, 7, 77);
+    font-size:small;
+
+}
+
+.fullname12{
+    position: relative;
+    top:13%;
+    text-align: left;
+    width:80%;
+    color: rgb(7, 7, 77);
+    font-size:medium;
+   
+}
+
+.photo{
+    position: relative;
+    /* height:45%; */
+    width: 50%;
+    top:5%;
+    left:25%;
+   
+}
+.button1{
+    position: relative;
+    width:21%;
+    top:10%;
+    align-self: center;
+   
+    font-size: medium;
+    background-color:  #3C286D;
+    color: white;
+    height:9%;
+    border-radius: 25px;
+}
+.button2{
+    /* position: relative;
+    width:50%;
+    top:10%; */
+    align-self: center;
+    /* font-weight: bolder;
+    font-size: larger; */
+    background-color: rgb(6, 6, 76);
+    color: white;
+    /* height:10%; */
+    border-radius: 25px;
+}
+
+button:hover{
+    background: rgb(78, 78, 186);
+}

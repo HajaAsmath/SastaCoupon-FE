@@ -1,0 +1,118 @@
+.login-container {
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    justify-content: center;
+}
+
+
+.login-box {
+    width: 780px;
+    height: 600px;
+    margin: 40px;
+    background-color: #19183F;
+    border-radius: 28.1618px 28.1618px  28.1618px 28.1618px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.login-box h1 , .login-box p {
+    color: white;
+    margin: 0px 0px 20px 0px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.email-box {
+    border-radius: 50px;
+    background-color: #636A96;
+    width: 290px;
+    margin: 10px 0px;
+}
+
+.email-box > span {
+    margin-top: 15px;
+    color: #C9C9C9;
+}
+
+.email-input {
+    background-color: #636A96;
+    outline: none;
+}
+
+.email-input label {
+    color: #C9C9C9;
+    font-weight: 600;
+}
+
+.email-input fieldset {
+    border-color: #636A96;
+}
+
+.email-input .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    color: white;
+}
+
+.email {
+    color: white;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.google-login {
+    width: 250px;
+    background-color: white;
+    display: flex;
+    padding: 10px;
+    border-radius: 8px;
+    color: rgba(0, 0, 0, 0.54);
+    cursor: pointer;
+}
+
+.google-login img {
+    padding: 0px 10px;
+}
+
+.google-login span {
+    font-weight: 600;
+}
+
+.line {
+    height: 1px;
+    width: 290px;
+    background-color: #969696;
+    margin: 27px 0;
+}
+
+.signup-message {
+    color: white;
+    display: inline;
+}
+
+.signup-message a {
+    color: #438CF9;
+}
+
+.close-login {
+    color: white;
+    font-size: 40px;
+    align-self: flex-end;
+    margin: 5px;
+}
+
+.error-text {
+    color: #ed3434 !important;
+}
