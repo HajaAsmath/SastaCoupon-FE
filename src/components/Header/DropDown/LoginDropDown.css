@@ -16,3 +16,10 @@
     margin: 10px;
     color: #3C286D;
 }
+
+@media all and (max-width: 769px) {
+    .account-dropdown {
+        top: 50px;
+        right: 10px;
+    }
+  }

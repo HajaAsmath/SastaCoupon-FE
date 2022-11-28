@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom';
 
 export default function DiscoverPageCard(props) {
 
-    const {couponId, couponName, couponImage, couponPrice} = props;
+    const {couponName, couponImage, couponPrice} = props;
 
-    return     <Card className="landing-card" sx={{ minWidth: 250, maxHeight:256, borderRadius: 10, backgroundColor: '#F7FAFC', boxShadow: '0', margin: '5px' }}>
+    return     <Card className="discovery-card" sx={{ minWidth: 209, maxHeight:256, borderRadius: 2, backgroundColor: '#F7FAFC', boxShadow: '0px 1px 6px rgba(0, 0, 0, 0.35)', margin: '10px' }}>
     <CardMedia sx={{height: 126,width: 'inherit', margin: '0 auto'}}
       component="img"
       image={couponImage}

@@ -19,16 +19,22 @@ export default function LogIn(props) {
     const passwordRef = useRef();
     const [error, setError] = useState();
     const [isSignIn, setIsSignIn] = useState(false);
+    const [isGuestSignIn, setIsGuestSignIn] = useState(false);
 
     const redirect = location.state?.path || '/';
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
         setIsLoading(true);
         let result;
         if(isSignIn) {
-            result = await signIn(emailRef.current.value, passwordRef.current.value)
+            if(isGuestSignIn) {
+                result = await signIn('test@gmail.com', '12345');
+            } else {
+                e.preventDefault();
+                result = await signIn(emailRef.current.value, passwordRef.current.value);
+            }
         } else {
+            e.preventDefault();
             result = await signUp(emailRef.current.value, passwordRef.current.value);
         }
         if(result === 'Success') {
@@ -65,12 +71,16 @@ export default function LogIn(props) {
                          <LoadingButton type='submit' onClick={() => {setIsSignIn(false)}} loading={isLoading} sx={{background: 'linear-gradient(90deg, #2FB8FF 0%, #9EECD9 100%)',
                             margin: '15px 0px',
                             borderRadius: 50, width: '290px'}} size='large' variant="contained">Sign Up</LoadingButton>}
+                
             </Box>
             <p>Or</p>
-                <Box className='google-login'>
-                    <img src={Google} alt='google'></img>
-                    <span>Continue with Google</span>
-                </Box>
+                    <LoadingButton type='submit' size='large' variant="contained" sx={{background: 'linear-gradient(90deg, #2FB8FF 0%, #9EECD9 100%)', color: 'white',
+                            margin: '0px 0px 15px 0px',
+                            borderRadius: 50, width: '290px'}} onClick={() => {
+                                setIsSignIn(true)
+                                setIsGuestSignIn(true)
+                                handleSubmit(this);
+                                }}>Login as guest</LoadingButton>
                 <div className='line'></div>
                 <Box className="signup-message">
                     {isLogin?<><span>Don't have an account? </span><Link to="/signUp">Sign Up</Link></> :

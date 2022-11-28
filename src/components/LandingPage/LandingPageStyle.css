@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .featured-coupons-container {
     display: flex;
     flex-direction: column;

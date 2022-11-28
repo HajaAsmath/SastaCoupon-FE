@@ -7,12 +7,12 @@ import Avatar from '@mui/material/Avatar';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { SESSION_STORAGE_KEY } from '../../constants/Constants';
+import { BACKEND_BASE_URL, SESSION_STORAGE_KEY } from '../../constants/Constants';
 
 function Profile() {
 
 const navigate = useNavigate();
-const baseURL = process.env.REACT_APP_NODE_BACKEND_URL;
+const baseURL = BACKEND_BASE_URL;
 const path = '/profile';
 const fullUrl = baseURL.concat(path);
 

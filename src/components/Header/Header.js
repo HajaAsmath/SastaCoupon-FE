@@ -64,6 +64,7 @@ export default function Header(props) {
       <span onClick={handleClick}>
             <span className="nav-icons material-icons md-36 white">person</span>
             <span class="nav-icons material-icons md-36 white">expand_more</span>
+            {dropdown?<LoginDropDown/>:null}
       </span>
       <NavModal/>
       </nav>}

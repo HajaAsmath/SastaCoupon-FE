@@ -9,12 +9,25 @@ const authHeader = () => {
   } else {
     user = {};
   }
-  if (user && user.tokenData) {
+  if (user && user.token) {
     return user.token;
   } else {
     return '';
   }
 }
+
+// const axiosClient = () => {
+//   axios.create({
+//     headers: {
+//       'Access-Control-Allow-Origin': '*',
+//       'Content-Type': 'application/json',
+//       Authorization: `Bearer ${authHeader()}`
+//     },
+//     baseURL: BACKEND_BASE_URL
+//   });
+
+//   return axios;
+// }
 
 const axiosClient = axios.create({
   headers: {
@@ -24,5 +37,9 @@ const axiosClient = axios.create({
   },
   baseURL: BACKEND_BASE_URL
 });
+
+// const create = () => { 
+//   return axiosClient();
+// }
 
 export default axiosClient;

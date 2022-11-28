@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import axios from '../../common/axiosInstance';
 import { Typography } from '@mui/material';
 import UploadStatusDialog from '../Dialog/UploadStatusDialog';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 export default function UploadCoupon(props) {
 
@@ -19,6 +20,7 @@ export default function UploadCoupon(props) {
     const [images, setImages] = useState(new Map());
     const [dialogOpen, setDialogOpen] = useState(false);
     const [message, setMessage] = useState();
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -102,14 +104,17 @@ export default function UploadCoupon(props) {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
+        setIsLoading(true);
         if(validateForm()) {
             axios.post('/uploadCoupon', createUploadCouponObject()).then((res) => {
                 if(res.status === 200) {
                     setMessage('Coupon Uploaded Successfully');
                     setDialogOpen(true);
+                    setIsLoading(false);
                 } else {
                     setMessage('Error uploading coupon');
                     setDialogOpen(true);
+                    setIsLoading(false);
                     throw new Error(res.status);
                 }
             }).catch(err => {
@@ -228,7 +233,7 @@ export default function UploadCoupon(props) {
           renderInput={(params) => <TextField {...params} />}
         />
 
-        <Button type='submit' sx={{backgroundColor: '#3C286D', margin: '30px 0px'}} size='large' variant="contained">Upload</Button>
+        <LoadingButton type='submit' sx={{backgroundColor: '#3C286D', margin: '30px 0px'}} size='large' variant="contained">Upload</LoadingButton>
         </form>
     </Box>
 }

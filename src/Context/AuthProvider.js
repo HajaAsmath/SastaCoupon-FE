@@ -59,7 +59,7 @@ export function AuthProvider({children}) {
 
     const logOut = () => {
         localStorage.removeItem(SESSION_STORAGE_KEY);
-        window.location.href='/SastaCouponFrontEnd/';
+        window.location.href='/SastaCoupon-FE/';
     }
 
     const value = {

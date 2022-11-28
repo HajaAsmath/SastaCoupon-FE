@@ -12,6 +12,7 @@ export default function UploadStatusDialog({open, setOpen, message}) {
   
     const handleClose = () => {
       setOpen(false);
+      navigate('/')
     };
 
     return <div>
