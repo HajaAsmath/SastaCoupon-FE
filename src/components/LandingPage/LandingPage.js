@@ -58,7 +58,7 @@ export default function LandingPage() {
                 )}
             </Box>
         </Box>
-        <Button variant="outlined" className="primary-button">View More</Button>
+        <Link to='/discover'><Button variant="outlined" className="primary-button">View More</Button></Link>
         <Box className='vector-box'>
             <Link to='/upload-coupon'><Button size="large" variant="outlined" className="primary-button sell">Sell your coupon</Button></Link>
         </Box>
