@@ -14,22 +14,27 @@ export default function LogIn(props) {
     const navigate = useNavigate();
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(false);
+    const [isGuestLoading, setIsGuestLoading] = useState(false);
     const { signIn, signUp } = useAuth();
     const emailRef = useRef();
     const passwordRef = useRef();
     const [error, setError] = useState();
-    const [isSignIn, setIsSignIn] = useState(false);
-    const [isGuestSignIn, setIsGuestSignIn] = useState(false);
+    let [isSignIn, setIsSignIn] = useState(false);
 
     const redirect = location.state?.path || '/';
 
-    const handleSubmit = async (e) => {
-        setIsLoading(true);
+    const handleSubmit = async (e, isGuestSignIn) => {
         let result;
+        if(isGuestSignIn) {
+            setIsSignIn(true);
+            isSignIn = true;
+        }
         if(isSignIn) {
             if(isGuestSignIn) {
+                setIsGuestLoading(true)
                 result = await signIn('test@gmail.com', '12345');
             } else {
+                setIsLoading(true);
                 e.preventDefault();
                 result = await signIn(emailRef.current.value, passwordRef.current.value);
             }
@@ -38,10 +43,12 @@ export default function LogIn(props) {
             result = await signUp(emailRef.current.value, passwordRef.current.value);
         }
         if(result === 'Success') {
+            setIsGuestLoading(false);
             setIsLoading(false);
             console.log(redirect);
             navigate(redirect);
         } else {
+            setIsGuestLoading(false);
             setIsLoading(false);
             setError(result);
         }
@@ -74,12 +81,10 @@ export default function LogIn(props) {
                 
             </Box>
             <p>Or</p>
-                    <LoadingButton type='submit' size='large' variant="contained" sx={{background: 'linear-gradient(90deg, #2FB8FF 0%, #9EECD9 100%)', color: 'white',
+                    <LoadingButton loading={isGuestLoading} type='submit' size='large' variant="contained" sx={{background: 'linear-gradient(90deg, #2FB8FF 0%, #9EECD9 100%)', color: 'white',
                             margin: '0px 0px 15px 0px',
                             borderRadius: 50, width: '290px'}} onClick={() => {
-                                setIsSignIn(true)
-                                setIsGuestSignIn(true)
-                                handleSubmit(this);
+                                handleSubmit(null, true);
                                 }}>Login as guest</LoadingButton>
                 <div className='line'></div>
                 <Box className="signup-message">
