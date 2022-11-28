@@ -38,7 +38,7 @@ export default function RouterSwitch() {
         <Route path="/transactionhistory" element={<ComingSoon/>}></Route>
         <Route path="/howitworks" element={<ComingSoon/>}></Route>
         <Route path="/help" element={<ComingSoon/>}></Route>
-        <Route path="/contact_us" element={<ComingSoon/>}></Route>
+        <Route path="/contact_us" element={<ComingSoon/>}></Route> 
         {/* <Route path="/details">
             <Route path=":name"></Route>
         </Route> */}
