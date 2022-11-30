@@ -6,13 +6,15 @@ const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
-export default function UploadStatusDialog({open, setOpen, message}) {
+export default function UploadStatusDialog({open, setOpen, message, isUploadFailed}) {
 
     const navigate = useNavigate();
   
     const handleClose = () => {
       setOpen(false);
-      navigate('/')
+      if(!isUploadFailed) {
+        navigate('/')
+      }
     };
 
     return <div>

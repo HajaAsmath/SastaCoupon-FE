@@ -5,6 +5,7 @@ import NavModal from './navModal/navModal'
 import LoginDropDown from "./DropDown/LoginDropDown.js";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from '../../Context/AuthProvider';
+import { Box, Typography } from "@mui/material";
 
 export default function Header(props) {
   
@@ -42,9 +43,8 @@ export default function Header(props) {
 
   return (
     <>
-    {/* {showLoginModal?<LogIn setShowLoginModal={setShowLoginModal}/>: null} */}
     {windowWidth>769? 
-    <nav className="nav">
+    <Box component='nav'  className="nav">
         <ul className="nav-list">
           <Link to="/home">Home</Link>
           <Link to="/about">Mission</Link>
@@ -52,22 +52,22 @@ export default function Header(props) {
           <Link to='/home'><img src={Logo} alt="site_logo" className='site_icon'></img></Link>
           <Link to="/faq">FAQ</Link>
           <Link to="/upload-coupon">Sell your coupon</Link>
-          <span onClick={handleClick}>
+          <Typography variant='span' onClick={handleClick}>
             <span className="material-icons">person</span>
             <span class="material-icons">expand_more</span>
-          </span>
+          </Typography>
         </ul>
         {dropdown?<LoginDropDown/>:null}
-      </nav>  :  <nav className="nav">
+      </Box>  :  <Box component='nav' className="nav">
       <span className="nav-icons material-icons md-48 white hamburger" onClick={showModal}>menu</span>
       <Link to='/'><img src={Logo} alt="site_logo" className='site_icon'></img></Link>
-      <span onClick={handleClick}>
+      <Typography variant='span' onClick={handleClick}>
             <span className="nav-icons material-icons md-36 white">person</span>
             <span class="nav-icons material-icons md-36 white">expand_more</span>
             {dropdown?<LoginDropDown/>:null}
-      </span>
+      </Typography>
       <NavModal/>
-      </nav>}
+      </Box>}
     </>
   );
 }

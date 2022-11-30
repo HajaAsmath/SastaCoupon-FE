@@ -1,9 +1,8 @@
 import { TextField, Typography } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Box from '@mui/material/Box';
-import { useRef, useState } from 'react';
-import { Link, redirect, useLocation, useNavigate } from 'react-router-dom';
-import Google from './GoogleLogo.png';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import './LogIn.css'
 import { useAuth } from '../../Context/AuthProvider';
@@ -54,7 +53,12 @@ export default function LogIn(props) {
         }
     }
 
-    console.log(redirect);
+    useEffect(() => {
+        document.querySelector('.nav').style.margin = '0px 0px 554px 0px'
+        return () => {
+            document.querySelector('.nav').style.margin = '0px 0px 0px 0px'
+        }
+    }, [])
 
     return <Box className="login-container">
         <Box className="login-box">

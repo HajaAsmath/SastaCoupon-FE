@@ -11,6 +11,9 @@
     justify-content: center;
 }
 
+.login-container ~ nav{
+    margin-bottom:554px;
+}
 
 .login-box {
     width: 780px;

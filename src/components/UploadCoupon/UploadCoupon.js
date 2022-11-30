@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 import "./UploadCoupon.css"
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from '../../common/axiosInstance';
 import { Typography } from '@mui/material';
 import UploadStatusDialog from '../Dialog/UploadStatusDialog';
@@ -21,6 +21,9 @@ export default function UploadCoupon(props) {
     const [dialogOpen, setDialogOpen] = useState(false);
     const [message, setMessage] = useState();
     const [isLoading, setIsLoading] = useState(false);
+    const [isUploadFailed, setIsUploadFailed] = useState(false);
+    let today = useRef(new Date());
+    let tomorrow = useRef(today.current.setDate(today.current.getDate() + 1))
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -111,14 +114,17 @@ export default function UploadCoupon(props) {
                     setMessage('Coupon Uploaded Successfully');
                     setDialogOpen(true);
                     setIsLoading(false);
-                } else {
-                    setMessage('Error uploading coupon');
-                    setDialogOpen(true);
-                    setIsLoading(false);
-                    throw new Error(res.status);
+                    setIsUploadFailed(false);
                 }
             }).catch(err => {
-                console.log(err);
+                if(err.response.data) {
+                    setMessage('Error uploading coupon: '+err.response.data);
+                } else {
+                    setMessage('Error uploading coupon');
+                }
+                setDialogOpen(true);
+                setIsLoading(false);
+                setIsUploadFailed(true);
             })
         }
     }
@@ -173,7 +179,7 @@ export default function UploadCoupon(props) {
     }
 
     return <Box className='upload-coupon'>
-        <UploadStatusDialog open={dialogOpen} setOpen={setDialogOpen} message={message}/>
+        <UploadStatusDialog open={dialogOpen} setOpen={setDialogOpen} message={message} isUploadFailed={isUploadFailed}/>
         <p id="heading">Upload your coupon</p>
         <form noValidate onSubmit={handleOnSubmit}>
         <TextField sx={{width: '40%', minWidth: 300}} onChange={handleFormChange} margin="normal" name="couponName" id="outlined-basic" label="Enter Coupon Name" variant="outlined" error={formValues.couponName.error} helperText={formValues.couponName.error && formValues.couponName.errorMessage}/>
@@ -224,7 +230,8 @@ export default function UploadCoupon(props) {
           disablePast
           label="Expiry Date"
           inputFormat="DD/MM/YYYY"
-          value={formValues.expiryDate.value}
+          value={tomorrow.current}
+          minDate={tomorrow.current}
           onChange={(newValue) => {
               setFormValues({...formValues, expiryDate: {
                   ...formValues.expiryDate, value: newValue
@@ -233,7 +240,7 @@ export default function UploadCoupon(props) {
           renderInput={(params) => <TextField {...params} />}
         />
 
-        <LoadingButton type='submit' sx={{backgroundColor: '#3C286D', margin: '30px 0px'}} size='large' variant="contained">Upload</LoadingButton>
+        <LoadingButton loading={isLoading} type='submit' sx={{backgroundColor: '#3C286D', margin: '30px 0px'}} size='large' variant="contained">Upload</LoadingButton>
         </form>
     </Box>
 }
