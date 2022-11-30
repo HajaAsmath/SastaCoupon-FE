@@ -69,7 +69,7 @@ export default function UploadCoupon(props) {
             errorMessage: 'Error - Select a denomination'
         },
         expiryDate: {
-            value: new Date(),
+            value: tomorrow.current,
             error: false,
             errorMessage: 'Error - Select the expiry date'
         }
@@ -126,6 +126,8 @@ export default function UploadCoupon(props) {
                 setIsLoading(false);
                 setIsUploadFailed(true);
             })
+        } else {
+            setIsLoading(false);
         }
     }
 
@@ -230,12 +232,13 @@ export default function UploadCoupon(props) {
           disablePast
           label="Expiry Date"
           inputFormat="DD/MM/YYYY"
-          value={tomorrow.current}
+          value={formValues.expiryDate.value}
           minDate={tomorrow.current}
           onChange={(newValue) => {
               setFormValues({...formValues, expiryDate: {
                   ...formValues.expiryDate, value: newValue
               }})
+              console.log(formValues);
           }}
           renderInput={(params) => <TextField {...params} />}
         />
