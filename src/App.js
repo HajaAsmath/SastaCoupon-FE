@@ -1,12 +1,11 @@
-
 import './App.css';
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import RouterSwitch from './Router/RouterSwitch';
 import { HashRouter } from 'react-router-dom';
-import {AuthProvider} from './Context/AuthProvider';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import RouterSwitch from './Router/RouterSwitch';
+import { AuthProvider } from './Context/AuthProvider';
 
 function App() {
   return (
@@ -14,14 +13,14 @@ function App() {
       <AuthProvider>
         <HashRouter>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <Header/>
-              <RouterSwitch/>
-            <Footer/>
+            <Header />
+            <RouterSwitch />
+            <Footer />
           </LocalizationProvider>
         </HashRouter>
       </AuthProvider>
     </div>
-    
+
   );
 }
 
