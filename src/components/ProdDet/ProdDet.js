@@ -99,7 +99,9 @@ export default function ProdDet(props) {
     console.log(data);
 
     const options = {
-      key: __DEV__ ? 'rzp_test_NpKUjWehxc13rP' : 'PRODUCTION_KEY',              // need to change while deploying"
+      // key: __DEV__ ? 'rzp_test_NpKUjWehxc13rP' : 'PRODUCTION_KEY',              // need to change while deploying"
+     
+      key: 'rzp_live_xPxs0PPQHo3DmY', 
       currency: data.currency,
       amount: data.amount.toString(),
       order_id: data.id,
