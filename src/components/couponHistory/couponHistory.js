@@ -59,7 +59,7 @@ console.log(res)
            
           
            <li>{coupons.COUPON_ID} </li>
-            <li><img className='image' src='https://i.postimg.cc/QMQLHZzv/travel-2.png' ></img></li>
+           <li><img className='image' src={coupons.URL} ></img></li>
             <li>{coupons.TRANSACTION_TYPE} </li>
             <li>{coupons.PAYMENT_TIMESTAMP.slice(0,10)} </li>
             </ul>)}

@@ -141,9 +141,10 @@ const fullUrl = baseURL.concat(path);
               <input hidden accept="image/*" multiple type="file"
                 onChange={handleFile} />
             </Button>
+            <button className='button1' onClick={handleHistory}>HISTORY</button>
           </div>
 
-          <button className='button1' onClick={handleHistory}>HISTORY</button>
+          {/* <button className='button1' onClick={handleHistory}>HISTORY</button> */}
 
         </div>
         <div className='profile2'>
