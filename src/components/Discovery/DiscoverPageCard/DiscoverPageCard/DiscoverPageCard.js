@@ -3,12 +3,16 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Box from '@mui/material/Box';
 import './DiscoverPageCard.css';
+import { Link } from 'react-router-dom';
 
 export default function DiscoverPageCard(props) {
-  const { couponName, couponImage, couponPrice } = props;
+  const {couponId, couponName, couponImage, couponPrice } = props;
 
   return (
-    <Card
+    <Link state={{couponId: couponId, 
+      couponName: couponName, 
+      couponImage: couponImage, 
+      couponPrice: couponPrice}} to='/prod-det'><Card
       className="discovery-card"
       sx={{
         minWidth: 209, maxHeight: 256, borderRadius: 2, backgroundColor: '#F7FAFC', boxShadow: '0px 1px 6px rgba(0, 0, 0, 0.35)', margin: '10px',
@@ -32,6 +36,6 @@ export default function DiscoverPageCard(props) {
           </p>
         </CardContent>
       </Box>
-    </Card>
+    </Card></Link>
   );
 }

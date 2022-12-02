@@ -25,20 +25,6 @@ export default function Header(props) {
     return () => window.removeEventListener('resize', updateSize);
   }, []);
 
-  useEffect(() => {
-    async function fetchUserCredits() {
-      await axios.get('/getCredits').then(res => {
-          if(res.data){
-            setCredits(JSON.parse(res.data).credits);
-          }
-       });
-    }
-
-    if(auth.getCurrentUser()) {
-      fetchUserCredits();
-    }
-  }, []);
-
   let showModal = (e) => {
     document.querySelector('.nav-modal').classList.remove('out');
     document.querySelector('.nav-modal').classList.add('active');
@@ -49,6 +35,7 @@ export default function Header(props) {
       setDropdown(false);
     } else {
       if(auth.getCurrentUser()) {
+        setCredits(auth.getCurrentUser().credits);
         setDropdown(true);
       } else {
         navigate('/logIn')
