@@ -44,7 +44,6 @@ export default function LogIn(props) {
         if(result === 'Success') {
             setIsGuestLoading(false);
             setIsLoading(false);
-            console.log(redirect);
             navigate(redirect);
         } else {
             setIsGuestLoading(false);
