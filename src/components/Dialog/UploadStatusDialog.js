@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import {
-  Button, Dialog, DialogActions, DialogContent, DialogContentText, Slide,
+  Slide
 } from '@mui/material';
 import { forwardRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CommonDialog from './CommonDialog';
 
 const Transition = forwardRef((props, ref) => <Slide direction="up" ref={ref} {...props} />);
 
@@ -20,23 +21,6 @@ export default function UploadStatusDialog({
   };
 
   return (
-    <div>
-      <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            {message}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+    <CommonDialog Transition={Transition} open={open} message={message} handleClose={handleClose}/>
   );
 }
