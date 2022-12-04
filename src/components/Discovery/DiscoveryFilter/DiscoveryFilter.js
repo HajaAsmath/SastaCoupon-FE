@@ -4,8 +4,9 @@ import CaptureDate from "./CaptureDate";
 import DiscoveryAmount from "./DiscoveryAmount";
 import DiscoveryHeading from "./DiscoveryHeading";
 import './DiscoveryFilter.css'
+import { useState } from "react";
 
-export default function DiscoveryFilter({handleFilterClick, sx}) {
+export default function DiscoveryFilter({handleFilterClick, sx, denomError, expiryDateError}) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleResetClick = () => {
@@ -19,7 +20,7 @@ export default function DiscoveryFilter({handleFilterClick, sx}) {
           <DiscoveryAmount heading="Min"/>
         </List>
         <List sx={{ padding: '8px 16px' }} component="div">
-          <DiscoveryAmount heading="Max"/>
+          <DiscoveryAmount heading="Max" error={denomError}/>
         </List>
       </DiscoveryHeading>
       <Divider component="li" />
@@ -28,7 +29,7 @@ export default function DiscoveryFilter({handleFilterClick, sx}) {
           <CaptureDate heading="From Date" />
         </List>
         <List sx={{ padding: '8px 16px' }} component="div">
-          <CaptureDate heading="To Date" />
+          <CaptureDate heading="To Date" error={expiryDateError}/>
         </List>
       </DiscoveryHeading>
       <List sx={{ padding: '8px 16px' }} component="div">

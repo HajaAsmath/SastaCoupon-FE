@@ -42,6 +42,7 @@ export default function CaptureDate({ heading }) {
     <Box component="div" sx={{ alignItems: 'centre', p: 1 }}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DesktopDatePicker
+          error={true}
           label={heading}
           value={value}
           minDate={new Date()}
