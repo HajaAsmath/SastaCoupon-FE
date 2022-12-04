@@ -11,10 +11,9 @@ const authHeader = () => {
   }
   if (user && user.token) {
     return user.token;
-  } else {
-    return '';
   }
-}
+  return '';
+};
 
 // const axiosClient = () => {
 //   axios.create({
@@ -33,12 +32,12 @@ const axiosClient = axios.create({
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${authHeader()}`
+    Authorization: `Bearer ${authHeader()}`,
   },
-  baseURL: BACKEND_BASE_URL
+  baseURL: BACKEND_BASE_URL,
 });
 
-// const create = () => { 
+// const create = () => {
 //   return axiosClient();
 // }
 

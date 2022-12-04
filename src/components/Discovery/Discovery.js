@@ -96,7 +96,7 @@ export default function Discovery() {
                                 <DiscoverPageCard key={item}/>
                             </DiscoveryCardSkeleton>
                 }):coupons.length>0?coupons.map((coupon, key) => 
-                <DiscoverPageCard key={key} couponName={coupon.NAME} couponImage={coupon.URL} couponPrice={coupon.PRICE}/>
+                <DiscoverPageCard key={key} couponId={coupon.ID} couponName={coupon.NAME} couponImage={coupon.URL} couponPrice={coupon.PRICE}/>
             ):<Box sx={{fontSize: '20px', fontFamily: 'PatuaOne'}}>No coupons found</Box>}
         </Box>
     <Pagination sx={{padding: '20px 0px', '& .MuiPagination-ul': {

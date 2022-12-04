@@ -12,6 +12,8 @@ import About from "../components/About/About"
 import History from "../components/couponHistory/couponHistory"
 import Discovery from "../components/Discovery/Discovery";
 import ComingSoon from '../components/ComingSoon'
+import Faq from "../components/Faq/Faq";
+import ContactUs from "../components/ContactUs/ContactUs";
 
 export default function RouterSwitch() {
     return <Routes>
@@ -27,7 +29,7 @@ export default function RouterSwitch() {
         <Route path="/payment-fail" element={<Pay_fail/>}></Route>
         <Route path="/about" element={<About/>}></Route>
         <Route path="/coupon-history" element={<History/>}></Route>
-        <Route path="/faq" element={<ComingSoon/>}></Route>
+        <Route path="/faq" element={<Faq/>}></Route>
         <Route path="/press" element={<ComingSoon/>}></Route>
         <Route path="/reviews" element={<ComingSoon/>}></Route>
         <Route path="/careers" element={<ComingSoon/>}></Route>
@@ -38,7 +40,7 @@ export default function RouterSwitch() {
         <Route path="/transactionhistory" element={<ComingSoon/>}></Route>
         <Route path="/howitworks" element={<ComingSoon/>}></Route>
         <Route path="/help" element={<ComingSoon/>}></Route>
-        <Route path="/contact_us" element={<ComingSoon/>}></Route> 
+        <Route path="/contact_us" element={<ContactUs/>}></Route> 
         {/* <Route path="/details">
             <Route path=":name"></Route>
         </Route> */}
