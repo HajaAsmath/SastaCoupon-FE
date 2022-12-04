@@ -1,7 +1,7 @@
 import React from "react";
 import "./ProdDet.css";
 import Logo from "./Indigo.png"
-import {  Box } from "@mui/material";
+import { Box, Dialog, DialogContent, DialogContentText } from "@mui/material";
 import Alert from '@mui/material/Alert';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -37,11 +37,13 @@ export default function ProdDet(props) {
 
   const path = '/razorpay';
   const path1 = '/proddet'
+  const path2 = '/couponsold'
   const fullUrl = baseURL.concat(path);
   const fullUrl1 = baseURL.concat(path1);
-
+  const fullUrl2 = baseURL.concat(path2);
   const location = useLocation();
   const navigate = useNavigate();
+
 
   const navigateTosuccess = (obj) => {
     // 👇️ navigate to /contacts
@@ -56,6 +58,8 @@ export default function ProdDet(props) {
       state: obj
     })
   };
+
+
   let auth = useAuth();
   const [coupon, setcoupon] = useState({
     ID: '',
@@ -70,6 +74,15 @@ export default function ProdDet(props) {
     SOLD: '',
 
   });
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   //*********************Razorpay Integration********************************* */
   const [name, setName] = useState('Mehul')
   async function displayRazorpay() {
@@ -77,7 +90,9 @@ export default function ProdDet(props) {
     if (coupon.SOLD == 'TRUE') {
       console.log("INside SOld checkl");
       // <Alert severity="error">Coupon Already Sold</Alert>
-      alert("Coupon Already Sold !!!");
+      handleClickOpen();
+
+      // alert("Coupon Already Sold !!!");
     }
     else {
       console.log("Inside Dispaly Razor")
@@ -123,6 +138,14 @@ export default function ProdDet(props) {
           image: 'https://i.postimg.cc/Qx7Fm4sm/Logo.png',
           handler: function (response) {
 
+
+            axios.post(fullUrl2, {
+              id: coupon.ID,                                        //   change to dynamic once connection is done
+            })
+              .then((response) => {
+                alert("Bought/Sold Successfully")
+              });
+
             console.log(response);
             let obj = {
               "transaction_id": response.razorpay_payment_id,
@@ -130,6 +153,8 @@ export default function ProdDet(props) {
               "signature": response.razorpay_signature,
               "coupon_code": coupon.COUPON_CODE,
             }
+
+
 
             navigateTosuccess(obj);
           },
@@ -202,9 +227,6 @@ export default function ProdDet(props) {
             "SOLD": res.data.SOLD,
           }
 
-          
-          console.log("SOLD"+res.data.SOLD)
-
           setcoupon(item1 => ({
             ...item1,
             ...value1
@@ -219,8 +241,21 @@ export default function ProdDet(props) {
   }, []);
 
   //**************************************************** */
+
   return (
     <Box className="main1">
+      {open} & <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Coupon Already Sold!! Please buy other coupons !!
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
       <div className="coupon">
         <img className="coupondesc1" id="logo" src={coupon.URL}></img>
         {/* <div className="coupondesc2"> */}
@@ -246,11 +281,11 @@ export default function ProdDet(props) {
         </div>
         <div className="couponitem">
           <label className="label">Expiry Date</label>
-          <label className="input">{coupon.EXPIRY} </label>     
+          <label className="input">{coupon.EXPIRY} </label>
         </div>
         <div className="couponitem" >
           <label className="label">Name </label>
-          <label className="input">{coupon.NAME} </label>      
+          <label className="input">{coupon.NAME} </label>
         </div>
         <div className="couponitem">
           <label className="label">Amount </label>
