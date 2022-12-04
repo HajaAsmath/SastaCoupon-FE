@@ -17,6 +17,8 @@ export default function Discovery() {
     const [searchParams] = useSearchParams();
     const [windowWidth, setWindowWidth] = useState(0);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [denomError, setDenomError] = useState(false);
+    const [expiryDateError, setExpiryDateError] = useState(false);
 
     useLayoutEffect(() => {
         function updateSize() {
@@ -68,6 +70,11 @@ export default function Discovery() {
     }
 
     const handleFilterClick = () => {
+        if(searchParams.get('Min') > searchParams.get('Max')) {
+            setDenomError(true);
+            return;
+        }
+        setDenomError(false);
         setIsDrawerOpen(false);
         fetchCoupons({min: searchParams.get('Min'), 
         max: searchParams.get('Max'), 
@@ -77,7 +84,7 @@ export default function Discovery() {
     
     return <Box sx={windowWidth>769?{display: 'flex' }:{textAlign: 'left'}}>
         {windowWidth>769? 
-        <DiscoveryFilter handleFilterClick={handleFilterClick}/>:
+        <DiscoveryFilter handleFilterClick={handleFilterClick} denomError={denomError}/>:
         <>
         <Button sx={{margin: '20px 55px 0px 6%',
         border: '1px solid #615E5B80', 
@@ -85,7 +92,10 @@ export default function Discovery() {
         color: '#3C286D', 
         fontSize: '20px'}} onClick={() => {setIsDrawerOpen(true)}}>Filter <span class="material-icons">filter_alt</span></Button>
         <SwipeableDrawer open={isDrawerOpen} anchor= 'bottom' onClose={() => {setIsDrawerOpen(false)}}>
-            <DiscoveryFilter sx={{margin: '20px auto', width: '60%'}} handleFilterClick={handleFilterClick}/>
+            <DiscoveryFilter sx={{margin: '20px auto', width: '60%'}} 
+            handleFilterClick={handleFilterClick} 
+            denomError={denomError}
+            expiryDateError={expiryDateError}/>
         </SwipeableDrawer>
             </>}
         <Box sx={{width: '100%'}}>

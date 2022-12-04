@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-export default function DiscoveryAmount({ heading }) {
+export default function DiscoveryAmount({ heading, error }) {
   const [amount, setAmount] = useState();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -50,11 +50,14 @@ export default function DiscoveryAmount({ heading }) {
     <>
       <TextField
         margin="normal"
+        type= 'number'
         fullWidth
         id={heading}
         label={`${heading} Amount`}
         name={heading}
         onChange={updateAmount}
+        error={error}
+        helperText= {error?'Min value should be lesser than Max':''}
       />
     </>
   );

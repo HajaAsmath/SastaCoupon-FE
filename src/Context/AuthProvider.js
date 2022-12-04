@@ -40,7 +40,9 @@ export function AuthProvider({children}) {
             } else {
                 return 'User Not found';
             }
-        }).catch(() => "User not found");
+        }).catch((err) => {
+            return err.response.data;
+    });
     }
 
     const signUp = async (email, password) => {
