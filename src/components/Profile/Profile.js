@@ -134,12 +134,12 @@ function Profile() {
           <div className='photo'>
             <div className='avatar'>
               <Avatar className='avatar' alt="Remy Sharp" src={file}
-                sx={{ width: 220, height: 200,  color: 'darkgrey' }}
+                sx={{  width: 'inherit', height: 200,  color: 'darkgrey' }}
                 variant="square" />
             </div>
             <div className='upload'>
               <Button className='button2' variant="contained" component="label"
-               sx={{  ":hover": { backgroundColor: '#d11aff' }, backgroundColor: '#3C286D', borderRadius: 25, }}
+                sx={{  ":hover": { backgroundColor: '#d11aff' }, backgroundColor: '#3C286D',  width: 'inherit'  }}
               >
              
                 Upload
@@ -149,7 +149,8 @@ function Profile() {
               </Button>
             </div>
             <div className='history'>
-              <button className='button1' onClick={handleHistory}>HISTORY</button>
+              {/* <button className='button1' onClick={handleHistory}>HISTORY</button> */}
+              <Button sx={{  width: 'inherit',backgroundColor: '#3C286D' }} onClick={handleHistory} variant="contained" component="label">History</Button>
             </div>
           </div>
 
@@ -198,9 +199,9 @@ function Profile() {
                 value={profile.EMAIL_ID}></TextField>
             </div>
           </div>
-          <label className='perinfo1' >Address</label>
+          <label className='perinfo' >Address</label>
           <div className='profile22'>
-            <div className='fullname'>
+            <div className='fullname1'>
 
               <label className='fullname11'>Street</label>
               <TextField className='fullname12' size="small" style={{ width: 350 }}
@@ -208,7 +209,7 @@ function Profile() {
                 value={profile.STREET}>
               </TextField>
             </div>
-            <div className='fullname'>
+            <div className='fullname1'>
               <label className='fullname11'>City</label>
               <TextField className='fullname12' size="small" style={{ width: 350 }}
                 onChange={e => setprofile({ ...profile, CITY: e.target.value })}
@@ -217,21 +218,21 @@ function Profile() {
 
 
             </div>
-            <div className='fullname'>
+            <div className='fullname1'>
               <label className='fullname11'>State</label>
               <TextField className='fullname12' size="small" style={{ width: 350 }}
                 onChange={e => setprofile({ ...profile, STATE: e.target.value })}
                 value={profile.STATE}>
               </TextField>
             </div>
-            <div className='fullname'>
+            <div className='fullname1'>
               <label className='fullname11'>Zip Code</label>
               <TextField className='fullname12' type='number' size="small" style={{ width: 350 }}
                 onChange={e => setprofile({ ...profile, ZIP_CODE: e.target.value })}
                 value={profile.ZIP_CODE}>
               </TextField>
             </div>
-            <div className='fullname'>
+            <div className='fullname1'>
 
               <label className='fullname11'>Country</label>
               <TextField className='fullname12' size="small" style={{ width: 350 }}
@@ -242,9 +243,9 @@ function Profile() {
             </div>
           </div>
 
-          <button className='button' onClick={handleSave} >Save</button>
-          {/* <Button className='button' size = "small" variant="contained" 
-           onClick={handleSave}>Save</Button> */}
+          
+          <Button sx={{ alignSelf:'center',margin:3, width: 20,backgroundColor: '#3C286D' }} onClick={handleSave} variant="contained" component="label">Save</Button>
+         
         </div>
       </div>
 
