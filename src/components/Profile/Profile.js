@@ -149,14 +149,13 @@ function Profile() {
               </Button>
             </div>
             <div className='history'>
-              {/* <button className='button1' onClick={handleHistory}>HISTORY</button> */}
+       
               <Button sx={{  width: 'inherit',backgroundColor: '#3C286D' }} onClick={handleHistory} variant="contained" component="label">History</Button>
             </div>
           </div>
-
-          {/* <button className='button1' onClick={handleHistory}>HISTORY</button> */}
-
         </div>
+
+
         <div className='profile2'>
           <label className='perinfo'>Personal Information</label>
           <div className='profile21'>
