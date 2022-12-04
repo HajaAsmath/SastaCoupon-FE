@@ -11,10 +11,10 @@ import { BACKEND_BASE_URL, SESSION_STORAGE_KEY } from '../../constants/Constants
 
 function Profile() {
 
-const navigate = useNavigate();
-const baseURL = BACKEND_BASE_URL;
-const path = '/profile';
-const fullUrl = baseURL.concat(path);
+  const navigate = useNavigate();
+  const baseURL = BACKEND_BASE_URL;
+  const path = '/profile';
+  const fullUrl = baseURL.concat(path);
 
   let id = 1;
   let first_name = '';
@@ -23,7 +23,7 @@ const fullUrl = baseURL.concat(path);
   let contact;
   let street;
   let zip_code;
-  
+
   const [profile, setprofile] = useState({
     ID: '',
     FIRST_NAME: '',
@@ -35,7 +35,7 @@ const fullUrl = baseURL.concat(path);
     STATE: '',
     ZIP_CODE: '',
     COUNTRY: '',
-    ADDRESS_ID:'',
+    ADDRESS_ID: '',
   });
   //State to store image file
   const [file, setFile] = useState();
@@ -46,19 +46,19 @@ const fullUrl = baseURL.concat(path);
 
   //Functinality for Save button
   async function handleSave() {
-  
 
-       axios.post(fullUrl, {   
+
+    axios.post(fullUrl, {
       id: profile.ID,                                        //   change to dynamic once connection is done
       firstname: profile.FIRST_NAME,
-      lastname:profile.LAST_NAME,
+      lastname: profile.LAST_NAME,
       contact: profile.CONTACT,
-      street:profile.STREET,
-      city:profile.CITY,
-      state:profile.STATE,
-      country:profile.COUNTRY,
-      zipcode:profile.ZIP_CODE,
-      address_id:profile.ADDRESS_ID,
+      street: profile.STREET,
+      city: profile.CITY,
+      state: profile.STATE,
+      country: profile.COUNTRY,
+      zipcode: profile.ZIP_CODE,
+      address_id: profile.ADDRESS_ID,
     })
       .then((response) => {
         alert("Saved Successfully")
@@ -69,9 +69,9 @@ const fullUrl = baseURL.concat(path);
   async function handleHistory() {
 
     let obj = {
-      "id": profile.ID,  
+      "id": profile.ID,
     }
-    console.log("Object"+JSON.stringify(obj));
+    console.log("Object" + JSON.stringify(obj));
     navigate('/coupon-history', {
       state: obj
     })
@@ -80,12 +80,12 @@ const fullUrl = baseURL.concat(path);
   useEffect(() => {
     const userId = JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY)).userId;
     console.log(process.env.REACT_APP_NODE_BACKEND_URL);
-    console.log("jgjghj"+process.env.REACT_APP_NODE_BACKEND_URL);
+    console.log("jgjghj" + process.env.REACT_APP_NODE_BACKEND_URL);
     axios
-        .get(fullUrl,{
-      params:{
-        id:userId
-      }
+      .get(fullUrl, {
+        params: {
+          id: userId
+        }
       })
       .then(
         (res) => {
@@ -99,7 +99,7 @@ const fullUrl = baseURL.concat(path);
           let updatedValue = {};
           console.log(res.data);
           console.log(zip_code);
-        
+
           updatedValue = {
             "ID": res.data.ID,
             "FIRST_NAME": res.data.FIRST_NAME,
@@ -111,13 +111,13 @@ const fullUrl = baseURL.concat(path);
             "STATE": res.data.STATE,
             "COUNTRY": res.data.COUNTRY,
             "ZIP_CODE": zip_code,
-            "ADDRESSS_ID":res.data.ADDRESSS_ID,
+            "ADDRESSS_ID": res.data.ADDRESSS_ID,
           }
           setprofile(item => ({
             ...item,
             ...updatedValue
           }));
-        
+
         }
 
       )
@@ -132,16 +132,25 @@ const fullUrl = baseURL.concat(path);
         <div className='profile1'>
 
           <div className='photo'>
-            <Avatar alt="Remy Sharp" src={file}
-              sx={{ width: 190, height: 190, margin: 3, color: 'darkgrey' }}
-              variant="square" />
-            <Button className='button2' variant="contained" component="label" 
-            sx={{ ":hover":{ backgroundColor:'#d11aff'},backgroundColor:'#3C286D' , borderRadius:25 ,}}>
-              Upload
-              <input hidden accept="image/*" multiple type="file"
-                onChange={handleFile} />
-            </Button>
-            <button className='button1' onClick={handleHistory}>HISTORY</button>
+            <div className='avatar'>
+              <Avatar className='avatar' alt="Remy Sharp" src={file}
+                sx={{ width: 220, height: 200,  color: 'darkgrey' }}
+                variant="square" />
+            </div>
+            <div className='upload'>
+              <Button className='button2' variant="contained" component="label"
+               sx={{  ":hover": { backgroundColor: '#d11aff' }, backgroundColor: '#3C286D', borderRadius: 25, }}
+              >
+             
+                Upload
+                <input hidden accept="image/*" multiple type="file"
+                  onChange={handleFile} />
+           
+              </Button>
+            </div>
+            <div className='history'>
+              <button className='button1' onClick={handleHistory}>HISTORY</button>
+            </div>
           </div>
 
           {/* <button className='button1' onClick={handleHistory}>HISTORY</button> */}
@@ -165,7 +174,7 @@ const fullUrl = baseURL.concat(path);
             <div className='fullname1'>
 
               <label className='fullname11'>Last Name</label>
-              <TextField className='fullname12' type='text'size="small" style={{ width: 350 }}
+              <TextField className='fullname12' type='text' size="small" style={{ width: 350 }}
                 onChange={e => {
                   setprofile({ ...profile, LAST_NAME: e.target.value })
                   console.log(profile)
@@ -239,7 +248,7 @@ const fullUrl = baseURL.concat(path);
         </div>
       </div>
 
-    </Box>
+     </Box>
 
   );
 }

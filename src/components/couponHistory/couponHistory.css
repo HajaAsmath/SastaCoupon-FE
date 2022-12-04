@@ -44,5 +44,13 @@
 .image {
     position: relative;
     height: 115px;
+    width:130px;
     left: 15px;
+}
+
+.trans_type{
+    position: relative;
+    width:5%;
+    text-align: left;
+    left:2%;
 }

@@ -70,6 +70,8 @@ export default function ProdDet(props) {
   const [name, setName] = useState('Mehul')
   async function displayRazorpay() {
     console.log("Inside Dispaly Razor")
+    if (auth.getCurrentUser()) {
+   
     const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
 
     if (!res) {
@@ -145,7 +147,10 @@ export default function ProdDet(props) {
       navigateTofail(obj1);
 
     });
+  } else {
+    navigate('/logIn')
   }
+  }//end of display razor
   let value1 = {};
   let coup_id;
   //*********************************Fetching Coupon Details**************************************/
@@ -158,11 +163,6 @@ export default function ProdDet(props) {
   }
   useEffect(() => {
     console.log("Inside PRodetais Useeefeect");
-
-    if (auth.getCurrentUser()) {
-    } else {
-      navigate('/logIn')
-    }
 
     axios
       .get(fullUrl1, {
