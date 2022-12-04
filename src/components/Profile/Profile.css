@@ -188,3 +188,33 @@ button:hover{
     background: rgb(78, 78, 186);
 }
 
+@media screen and (max-width: 850px) {
+
+    .main2{
+      
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+      
+ 
+     
+        
+        
+}
+.profile1 {
+   
+    width: 50%;
+    left:25%;
+}
+
+
+.profile2 {
+    position: relative;
+    width: 50%;
+    left: 25%;
+    border-radius: 25px;
+}
+
+
+}
