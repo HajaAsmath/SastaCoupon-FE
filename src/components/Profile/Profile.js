@@ -242,9 +242,9 @@ function Profile() {
             </div>
           </div>
 
-          
-          <Button sx={{ margin:1, width: 200,backgroundColor: '#3C286D' }} onClick={handleSave} variant="contained" component="label">Save</Button>
-         
+          <div>
+          <Button sx={{ alignSelf:'center',margin:3, width: 200,backgroundColor: '#3C286D' }} onClick={handleSave} variant="contained" component="label">Save</Button>
+          </div>
         </div>
       </div>
 

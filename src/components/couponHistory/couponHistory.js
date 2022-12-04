@@ -4,7 +4,8 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { BACKEND_BASE_URL, BACKEND_BASE_URL1 } from '../../constants/Constants';
-
+import { Pagination } from '@mui/material';
+// import Pagination from "./Pagination"
 const baseURL = BACKEND_BASE_URL;
 const path = '/couponhistory';
 const fullUrl = baseURL.concat(path);
@@ -13,7 +14,19 @@ function CouponHistory() {
     let data;
     const [couponhistory, setCouponsHistory] = useState([]);
 
+    const [pageNumber, setPageNumber] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(5);
+
     const location = useLocation();
+    const count =  Math.ceil(couponhistory.length/postsPerPage)
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = couponhistory.slice(firstPostIndex, lastPostIndex);
+    const handlePageChange = (event, page) => {
+        setCurrentPage(page);
+    }
+
     useEffect(() => {
         console.log("Inside CouponHistory Useeefeect1" + fullUrl);
         let id1;
@@ -55,7 +68,7 @@ function CouponHistory() {
             </ul>
             {/* <div class='test'> {JSON.stringify(couponhistory)} </div> */}
 
-            {couponhistory.map((coupons) => <ul class='nav-list2 '>
+            {currentPosts.map((coupons) => <ul class='nav-list2 '>
 
 
                 <li>{coupons.COUPON_ID} </li>
@@ -64,7 +77,18 @@ function CouponHistory() {
                 <li>{coupons.PAYMENT_TIMESTAMP.slice(0, 10)} </li>
             </ul>)}
 
+            <Pagination sx={{
+                padding: '20px 0px', '& .MuiPagination-ul': {
+                    justifyContent: 'center'
+                }
+            }} count={count} variant="outlined" shape="rounded" onChange={handlePageChange} />
 
+            {/* <Pagination
+                totalPosts={couponhistory.length}
+                postsPerPage={postsPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+            /> */}
 
         </div>
 

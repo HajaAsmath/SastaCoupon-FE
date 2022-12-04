@@ -8,7 +8,7 @@ import axios from "axios";
 import { CountertopsRounded } from "@mui/icons-material";
 import { AuthProvider, useAuth } from "../../Context/AuthProvider";
 import Profile from "../Profile/Profile";
-import { BACKEND_BASE_URL } from "../../constants/Constants";
+import { BACKEND_BASE_URL, BACKEND_BASE_URL1 } from "../../constants/Constants";
 const __DEV__ = document.domain === 'localhost';   // need to change while deploying"
 
 function loadScript(src) {
@@ -32,6 +32,8 @@ export default function ProdDet(props) {
 
 
   const baseURL = BACKEND_BASE_URL;
+  // const baseURL = BACKEND_BASE_URL1;
+
   const path = '/razorpay';
   const path1 = '/proddet'
   const fullUrl = baseURL.concat(path);
@@ -101,9 +103,9 @@ export default function ProdDet(props) {
     console.log(data);
 
     const options = {
-      // key: __DEV__ ? 'rzp_test_NpKUjWehxc13rP' : 'PRODUCTION_KEY',              // need to change while deploying"
+      key: __DEV__ ? 'rzp_test_NpKUjWehxc13rP' : 'PRODUCTION_KEY',              // need to change while deploying"
      
-      key: 'rzp_live_xPxs0PPQHo3DmY', 
+      // key: 'rzp_live_xPxs0PPQHo3DmY', 
       currency: data.currency,
       amount: data.amount.toString(),
       order_id: data.id,
@@ -162,7 +164,7 @@ export default function ProdDet(props) {
     coup_id = location.state.couponId;
   }
   useEffect(() => {
-    console.log("Inside PRodetais Useeefeect");
+    console.log("Inside PRodetais Useeefeect"+coup_id);
 
     axios
       .get(fullUrl1, {
