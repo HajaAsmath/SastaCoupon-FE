@@ -1,75 +1,73 @@
 .upload-coupon {
-    max-width: 60%;
-    min-width: 340px;
-    margin: 50px auto;
-    box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.10);
-    border-radius: 5px;
+  max-width: 60%;
+  min-width: 340px;
+  margin: 50px auto;
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 #heading {
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 138.6%;
-    font-family: 'Poppins';
-    padding: 20px 0px;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 138.6%;
+  font-family: "Poppins";
+  padding: 20px 0px;
 }
 
 .upload-coupon form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .upload-coupon form > span {
-    margin: 2em 0px;
-    font-weight: bold;
-    color: #3C286D;
+  margin: 2em 0px;
+  font-weight: bold;
+  color: #3c286d;
 }
 
 .image-list {
-    max-width: 530px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+  max-width: 530px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .image-list > div {
-    width: 141px;
-    height: 133px;
-    border-radius: 8px;
-    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
-    margin: 10px 10px;
+  width: 141px;
+  height: 133px;
+  border-radius: 8px;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
+  margin: 10px 10px;
 }
 
 .image-list > div > img {
-    max-width: 90%;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+  max-width: 90%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 #denom {
-    border: 1px solid #3C286D;
-    color: #3C286D;
-    margin: 10px;
+  border: 1px solid #3c286d;
+  color: #3c286d;
+  margin: 10px;
 }
 
-#denom.active  {
-    background-color: #3C286D !important;
-    color: white !important;
+#denom.active {
+  background-color: #3c286d !important;
+  color: white !important;
 }
-
-
 
 .denomination > div {
-    margin: 10px;
+  margin: 10px;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .image-container.active {
-    box-shadow: 0px 1px 10px rgb(3, 92, 246);
+  box-shadow: 0px 1px 10px rgb(3, 92, 246);
 }

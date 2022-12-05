@@ -1,4 +1,3 @@
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -9,8 +8,7 @@
 <br/>
 
 Welcome! we hope you enjoy the site as much as we enjoyed making it.
- 
-  
+
 <!-- TABLE OF CONTENTS -->
 <br/>
 
@@ -36,7 +34,6 @@ Welcome! we hope you enjoy the site as much as we enjoyed making it.
 1. We recommend using this app in Google Chrome, Firefox.
 2. The app is optimised for most popular screen sizes
 
-
 <br/>
 <b>Test Credentials:</b>
 
@@ -48,18 +45,19 @@ A "login by test account" button is provided to start using the application with
 # Installation
 
 1. Clone the repo
-    ```sh
-    git clone https://github.com/HajaAsmath/SastaCoupon-FE.git
-    ```
+
+   ```sh
+   git clone https://github.com/HajaAsmath/SastaCoupon-FE.git
+   ```
 
 2. Install NPM packages
-    ```sh
-    cd SastaCoupon-FE && npm install
-    ```
+   ```sh
+   cd SastaCoupon-FE && npm install
+   ```
 3. Run
-    ```sh
-    npm start
-    ```
+   ```sh
+   npm start
+   ```
 4. Open http://localhost:3000/SastaCoupon-FE to view it in the browser
 
 <br/>
@@ -81,7 +79,6 @@ We tried to use a completely modern tech stack while testing out some new techno
 
 - [Haja Asmath](https://www.linkedin.com/in/haja-asmath) - [GiHub](https://github.com/HajaAsmath) - [Email](mailto:asmath1997@gmail.com)
 - [Milind Chaudhari](https://www.linkedin.com/in/milind-chaudhari-6b5807129/) - [GiHub](https://github.com/Milind220397) - [Email](mailto:milind220397@gmail.com)
-
 
 # License
 

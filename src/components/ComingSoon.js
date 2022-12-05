@@ -1,7 +1,13 @@
-import comingSoon from './coming_soon.jpg'
+import comingSoon from "./coming_soon.jpg";
 
 export default function ComingSoon() {
-    return <img src={comingSoon} alt='coming soon' style={{
-        maxWidth: '40%'
-    }}></img>
+  return (
+    <img
+      src={comingSoon}
+      alt="coming soon"
+      style={{
+        maxWidth: "40%",
+      }}
+    />
+  );
 }

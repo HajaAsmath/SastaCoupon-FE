@@ -1,18 +1,22 @@
 import React from "react";
 import "./Footer.css";
-import Logo from "./Site_Icon.png";
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import { Link } from "react-router-dom";
+import Logo from "./Site_Icon.png";
 
-export default function Footer(props) {
+export default function Footer() {
   return (
     <div className="footer">
       <div className="footer-content">
-        <Link to='/'><img src={Logo} alt="site_logo" className='site_icon'></img></Link>
+        <Link to="/">
+          <img src={Logo} alt="site_logo" className="site_icon" />
+        </Link>
         <span className="first-content-span">Your coupon, Your Choice</span>
-        <span className="first-content-span">© 2022 | SastaCoupon.com, LLC</span>
+        <span className="first-content-span">
+          © 2022 | SastaCoupon.com, LLC
+        </span>
       </div>
       <div className="footer-content">
         <span>ABOUT</span>
@@ -36,11 +40,11 @@ export default function Footer(props) {
       </div>
       <div className="footer-content">
         <span>CONTACT</span>
-        <Link to='/contact_us'>Contact Us</Link>
+        <Link to="/contact_us">Contact Us</Link>
         <span className="social-icons">
-          <FacebookIcon/>
-          <InstagramIcon/>
-          <TwitterIcon/>
+          <FacebookIcon />
+          <InstagramIcon />
+          <TwitterIcon />
         </span>
       </div>
     </div>

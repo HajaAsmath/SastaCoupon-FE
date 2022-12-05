@@ -1,70 +1,61 @@
-* 
-.content{
-   
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-     
+* .content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
-.content1{
-    position: relative;
-   
-    height: 100%;
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    
+.content1 {
+  position: relative;
+
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
 }
-.content2{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    
-    height: 100%;
-    width: 30%;
-  
-    
+.content2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  width: 30%;
 }
 
-.headings{
-    position: relative;
-    width: 100%;
-    height: 8%;
-    left: 8%;
-    text-align: left;
-    font-weight: 900;
-    font-size: x-large;
-    color: rgb(16, 15, 102);
-   border: rgb(29, 7, 115);
-    
+.headings {
+  position: relative;
+  width: 100%;
+  height: 8%;
+  left: 8%;
+  text-align: left;
+  font-weight: 900;
+  font-size: x-large;
+  color: rgb(16, 15, 102);
+  border: rgb(29, 7, 115);
 }
 
-.data{
-   
-        position: relative;
-        width: 90%;
-        left: 8%;
-        text-align: left;
-        color: rgb(16, 15, 102);
-       border: rgb(29, 7, 115);
-       overflow: auto;  
-            
+.data {
+  position: relative;
+  width: 90%;
+  left: 8%;
+  text-align: left;
+  color: rgb(16, 15, 102);
+  border: rgb(29, 7, 115);
+  overflow: auto;
 }
 
-.image{
-    position: relative;
+.image {
+  position: relative;
 }
 
-.content21{
-    position: relative;
-    border-radius: 25%;
-    margin:5%;
+.content21 {
+  position: relative;
+  border-radius: 25%;
+  margin: 5%;
 }
 
-.content22{
-    top:0%;
-    position: relative;
-    color: rgb(9, 9, 89);
-    margin:3%;
+.content22 {
+  top: 0%;
+  position: relative;
+  color: rgb(9, 9, 89);
+  margin: 3%;
 }

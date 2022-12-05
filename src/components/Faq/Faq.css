@@ -1,7 +1,7 @@
 .heading > .active {
-    display: inline-block;
+  display: inline-block;
 }
 
-.heading~.active{
-    display: block;
+.heading ~ .active {
+  display: block;
 }

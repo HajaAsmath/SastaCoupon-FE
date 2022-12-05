@@ -1,56 +1,53 @@
 .nav-list1 {
-
-    height: 50px;
-    margin: 0 auto;
-    top: 40px;
-    background-color: #3C286D;
-    border-radius: 35px;
-    font-family: patuaOne;
-    display: flex;
-    list-style: none;
-    font-size: larger;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    color: white;
+  height: 50px;
+  margin: 0 auto;
+  top: 40px;
+  background-color: #3c286d;
+  border-radius: 35px;
+  font-family: patuaOne;
+  display: flex;
+  list-style: none;
+  font-size: larger;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
 }
 
 .nav-list2 {
-
-    height: 115px;
-    margin: 0 auto;
-    top: 40px;
-    background-color: rgb(224, 225, 235);
-    border-radius: 35px;
-    font-family: patuaOne;
-    display: flex;
-    list-style: none;
-    font-size: larger;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    color: rgb(23, 2, 2);
-    margin: 5px;
-    padding: 1px;
-    text-align: left;
-    align-self: center;
-
+  height: 115px;
+  margin: 0 auto;
+  top: 40px;
+  background-color: rgb(224, 225, 235);
+  border-radius: 35px;
+  font-family: patuaOne;
+  display: flex;
+  list-style: none;
+  font-size: larger;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(23, 2, 2);
+  margin: 5px;
+  padding: 1px;
+  text-align: left;
+  align-self: center;
 }
 
 .nav-list2 > ul > li {
-    left:100px;
+  left: 100px;
 }
 
 .image {
-    position: relative;
-    height: 115px;
-    width:130px;
-    left: 15px;
+  position: relative;
+  height: 115px;
+  width: 130px;
+  left: 15px;
 }
 
-.trans_type{
-    position: relative;
-    width:5%;
-    text-align: left;
-    left:2%;
+.trans_type {
+  position: relative;
+  width: 5%;
+  text-align: left;
+  left: 2%;
 }

@@ -1,13 +1,13 @@
 .card-content {
-    background-color: white;
+  background-color: white;
 }
 
 .card-content > * {
-    font-family: patuaOne;
+  font-family: patuaOne;
 }
 
 @media screen and (max-width: 526px) {
-    .landing-card {
-        min-width: 220px;
-    }
+  .landing-card {
+    min-width: 220px;
+  }
 }

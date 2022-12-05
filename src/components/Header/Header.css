@@ -1,6 +1,6 @@
 .nav {
   height: calc(10vw + 20px);
-  background-image: url('./Vector.png');
+  background-image: url("./Vector.png");
   background-size: 100% 100%;
 }
 
@@ -21,13 +21,15 @@
   align-items: center;
 }
 
-.nav-list > li,a,span {
+.nav-list > li,
+a,
+span {
   cursor: pointer;
 }
 
 .nav-list a {
   text-decoration: none;
-  color: #3C286D;
+  color: #3c286d;
 }
 
 .site_icon {

@@ -1,119 +1,117 @@
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .featured-coupons-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #F0F3F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f3f5;
 }
 
-.featured-coupons-container>p {
-    font-family: patuaOne;
-    color: #3C286D;
-    font-size: x-large;
-    padding-top: 25px;
+.featured-coupons-container > p {
+  font-family: patuaOne;
+  color: #3c286d;
+  font-size: x-large;
+  padding-top: 25px;
 }
 
 .banner-container {
-    height: 355px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+  height: 355px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .banner-text {
-    font-family: patuaOne;
-    color: #3C1A6E;
-    text-align: left;
-    margin: 0 20px;
+  font-family: patuaOne;
+  color: #3c1a6e;
+  text-align: left;
+  margin: 0 20px;
 }
 
-.banner-text>p:first-child {
-    letter-spacing: 0.005em;
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 138.6%;
+.banner-text > p:first-child {
+  letter-spacing: 0.005em;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 138.6%;
 }
 
-.banner-image > img{
-    max-width: 291px;
-    height: auto;
+.banner-image > img {
+  max-width: 291px;
+  height: auto;
 }
 
 .feature-coupons-parent {
-    max-width: 1201px;
+  max-width: 1201px;
 }
 
 .featured-coupons {
-    
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 25px;
 }
 
 .primary-button {
-    border: 4px solid #B249AD !important;
-    border-radius: 50px !important;
-    color: black !important;
-    font-family: patuaOne !important;
-    margin: 15px !important;
+  border: 4px solid #b249ad !important;
+  border-radius: 50px !important;
+  color: black !important;
+  font-family: patuaOne !important;
+  margin: 15px !important;
 }
 
 .primary-button:hover {
-    border: 4px solid #B249AD !important;
-    border-radius: 50px;
-    color: black;
-    font-family: patuaOne;
+  border: 4px solid #b249ad !important;
+  border-radius: 50px;
+  color: black;
+  font-family: patuaOne;
 }
 
 .primary-button.sell {
-    color: white !important;
-    position: relative;
-    top: 70%;
+  color: white !important;
+  position: relative;
+  top: 70%;
 }
 
 .vector-box {
-    height: 640px;
-    width: 100%;
-    background-image: url('./Vector.png');
-    background-size: cover;
+  height: 640px;
+  width: 100%;
+  background-image: url("./Vector.png");
+  background-size: cover;
 }
 
-@media  screen and (max-width: 1024px) {
-    .vector-box {
-        height: 459px;
-    }
+@media screen and (max-width: 1024px) {
+  .vector-box {
+    height: 459px;
+  }
 }
 
-@media  screen and (max-width: 768px) {
-    .vector-box {
-        height: 318px;
-    }
+@media screen and (max-width: 768px) {
+  .vector-box {
+    height: 318px;
+  }
 }
 
-@media  screen and (max-width: 615px) {
-    .banner-text>p:first-child {
-        font-size: 30px;
-    }
+@media screen and (max-width: 615px) {
+  .banner-text > p:first-child {
+    font-size: 30px;
+  }
 }
 
-@media  screen and (max-width: 448px) {
-    .vector-box {
-        background-image: url('./Frame.png');
-    }
+@media screen and (max-width: 448px) {
+  .vector-box {
+    background-image: url("./Frame.png");
+  }
 
-    .primary-button.sell {
-        top: 37%
-    }
+  .primary-button.sell {
+    top: 37%;
+  }
 
-    .banner-image > img {
-        max-width: 150px;
-    }
+  .banner-image > img {
+    max-width: 150px;
+  }
 }
-

@@ -1,6 +1,7 @@
-import { TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+/* eslint-disable radix */
+import { TextField } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export default function DiscoveryAmount({ heading, error }) {
   const [amount, setAmount] = useState();
@@ -13,7 +14,7 @@ export default function DiscoveryAmount({ heading, error }) {
   };
 
   const addSearchParam = (key, status) => {
-    if (status !== '') {
+    if (status !== "") {
       if (searchParams.has(key)) {
         searchParams.set(key, status);
       } else {
@@ -27,13 +28,14 @@ export default function DiscoveryAmount({ heading, error }) {
 
   const getSearchParam = (key) => {
     const params = searchParams.get(key);
-    if (params !== null && params !== '') {
+    if (params !== null && params !== "") {
       return params;
     }
-    return '';
+    return "";
   };
   useEffect(() => {
     if (searchParams.has(heading)) {
+      // eslint-disable-next-line radix
       setAmount(parseInt(getSearchParam(heading)));
     } else {
       setAmount(0);
@@ -43,22 +45,20 @@ export default function DiscoveryAmount({ heading, error }) {
   useEffect(() => {
     if (amount > 0) {
       addSearchParam(heading, amount.toString());
-    } else addSearchParam(heading, '');
+    } else addSearchParam(heading, "");
   }, [amount]);
 
   return (
-    <>
-      <TextField
-        margin="normal"
-        type= 'number'
-        fullWidth
-        id={heading}
-        label={`${heading} Amount`}
-        name={heading}
-        onChange={updateAmount}
-        error={error}
-        helperText= {error?'Min value should be lesser than Max':''}
-      />
-    </>
+    <TextField
+      margin="normal"
+      type="number"
+      fullWidth
+      id={heading}
+      label={`${heading} Amount`}
+      name={heading}
+      onChange={updateAmount}
+      error={error}
+      helperText={error ? "Min value should be lesser than Max" : ""}
+    />
   );
 }

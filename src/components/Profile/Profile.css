@@ -1,220 +1,183 @@
-.mainbox{
-  
-    margin: 50px auto;
-    box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.10);
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.mainbox {
+  margin: 50px auto;
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.main2{
-      
-         display: flex;
-         flex-direction: row;
-         justify-content: center;
-         left: 0;
-         top: 25%;
-         width: 100%;
-      
-         
-         
+.main2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  left: 0;
+  top: 25%;
+  width: 100%;
 }
 
 .profile1 {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    /* background-color: brown; */
-  
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  /* background-color: brown; */
 }
 
-.photo{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-   
-    width: 50%;
-    top:5%;
-    left:25%;
-    /* background-color: blue; */
-   
+.photo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+
+  width: 50%;
+  top: 5%;
+  left: 25%;
+  /* background-color: blue; */
 }
-.avatar{
-    position: relative;
-    width: 100%;
-    /* background-color: rgb(111, 255, 0); */
+.avatar {
+  position: relative;
+  width: 100%;
+  /* background-color: rgb(111, 255, 0); */
 }
-.upload{
-    position: relative;
-    display:flex;
-    justify-content: center;
-    width: 100%;
-    padding-top:15%;
-    
+.upload {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 15%;
 }
-.history{
-    position: relative;
-    display:flex;
-    justify-content: center;
-    width: 100%;
-    padding-top:5%;
+.history {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 5%;
 }
 
-.button1{
-    position: relative;
-    width:90px; 
-    font-size: medium;
-    background-color:  #3C286D;
-    color: white;
-    text-align: center;
-    top:0%; 
-    border-radius: 25px;
-   
+.button1 {
+  position: relative;
+  width: 90px;
+  font-size: medium;
+  background-color: #3c286d;
+  color: white;
+  text-align: center;
+  top: 0%;
+  border-radius: 25px;
 }
-
-
-
 
 .profile2 {
-    position: relative;
-    display:flex;
-    flex-direction: column;
-    width: 70%;
-    border-radius: 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  border-radius: 25px;
 }
 
-.profile21{
-    position: relative;
-    
-    display:flex;
-    flex-wrap: wrap;
-    background-color: white;
+.profile21 {
+  position: relative;
+
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
 }
-.profile22{
-    position: relative;
-    display:flex;
-    flex-wrap: wrap;
-   
-    background-color: white;
+.profile22 {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+
+  background-color: white;
 }
-.fullname{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    /* width:50%; */
-    width: 'inherit';
-    /* height:20%; */
-    /* background-color: chartreuse; */
-   
-    
-    
-    
+.fullname {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* width:50%; */
+  width: "inherit";
+  /* height:20%; */
+  /* background-color: chartreuse; */
 }
 
-.fullname1{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: inherit;
-    margin: 1%;;
-   
+.fullname1 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: inherit;
+  margin: 1%;
 }
 
-.button{
-    position: relative;
-    width:10%; 
-    /* top:5%; */
-    left: 37%; 
-    font-weight: bolder;
-    font-size: larger;
-    background-color: #3C286D;
-    color: white;
-    border-radius: 25px;
-    padding: 1%;
-    margin: 5%;
-   
-    
+.button {
+  position: relative;
+  width: 10%;
+  /* top:5%; */
+  left: 37%;
+  font-weight: bolder;
+  font-size: larger;
+  background-color: #3c286d;
+  color: white;
+  border-radius: 25px;
+  padding: 1%;
+  margin: 5%;
 }
 
+.perinfo {
+  position: relative;
+  top: 0%;
 
-
-.perinfo{
-    position: relative;
-    top: 0%;
-   
-    /* width:100%; */
-    width:inherit;
-    text-align: left;
-    font-size:large;
-    color: rgb(7, 7, 77);
-    font-weight: bolder;
-    
+  /* width:100%; */
+  width: inherit;
+  text-align: left;
+  font-size: large;
+  color: rgb(7, 7, 77);
+  font-weight: bolder;
 }
-.perinfo1{
-    position: relative;
-    width:100%;
-    text-align: left;
-    font-size:large;
-    color: rgb(7, 7, 77);
-    font-weight: bolder;
-    
+.perinfo1 {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  font-size: large;
+  color: rgb(7, 7, 77);
+  font-weight: bolder;
 }
 
-.fullname11{
-    position: relative;
-    text-align: left;
-    top:10%;
-    width:80%;
-    color: rgb(7, 7, 77);
-    font-size:small;
-
+.fullname11 {
+  position: relative;
+  text-align: left;
+  top: 10%;
+  width: 80%;
+  color: rgb(7, 7, 77);
+  font-size: small;
 }
 
-.fullname12{
-    position: relative;
-    top:13%;
-    text-align: left;
-    width:80%;
-    color: rgb(7, 7, 77);
-    font-size:medium;
-   
+.fullname12 {
+  position: relative;
+  top: 13%;
+  text-align: left;
+  width: 80%;
+  color: rgb(7, 7, 77);
+  font-size: medium;
 }
 
-
-button:hover{
-    background: rgb(78, 78, 186);
+button:hover {
+  background: rgb(78, 78, 186);
 }
 
 @media screen and (max-width: 850px) {
-
-    .main2{
-      
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-      
- 
-     
-        
-        
-}
-.profile1 {
-   
+  .main2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+  .profile1 {
     width: 50%;
-    left:25%;
-}
+    left: 25%;
+  }
 
-
-.profile2 {
+  .profile2 {
     position: relative;
     width: 50%;
     left: 25%;
     border-radius: 25px;
-}
-
-
+  }
 }
