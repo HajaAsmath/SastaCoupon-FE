@@ -6,10 +6,12 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import RouterSwitch from './Router/RouterSwitch';
 import { AuthProvider } from './Context/AuthProvider';
+import * as Sentry from "@sentry/react";
 
 function App() {
   return (
     <div className="App">
+      
       <AuthProvider>
         <HashRouter>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -24,4 +26,5 @@ function App() {
   );
 }
 
-export default App;
+// export default App;
+export default Sentry.withProfiler(App);
