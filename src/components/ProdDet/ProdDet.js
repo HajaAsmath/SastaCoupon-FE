@@ -87,7 +87,7 @@ export default function ProdDet(props) {
   const [name, setName] = useState('Mehul')
   async function displayRazorpay() {
 
-    if (coupon.SOLD == 'TRUE') {
+    if (coupon.SOLD == '1') {
       console.log("INside SOld checkl");
       // <Alert severity="error">Coupon Already Sold</Alert>
       handleClickOpen();
