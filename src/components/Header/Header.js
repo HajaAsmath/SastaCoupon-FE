@@ -60,14 +60,14 @@ export default function Header(props) {
             <span class="material-icons">expand_more</span>
           </Typography>
         </ul>
-        {dropdown?<LoginDropDown credits={credits}/>:null}
+        {dropdown?<LoginDropDown credits={credits} setDropdown={setDropdown}/>:null}
       </Box>  :  <Box component='nav' className="nav">
       <span className="nav-icons material-icons md-48 white hamburger" onClick={showModal}>menu</span>
       <Link to='/'><img src={Logo} alt="site_logo" className='site_icon'></img></Link>
       <Typography variant='span' onClick={handleClick}>
             <span className="nav-icons material-icons md-36 white">person</span>
             <span class="nav-icons material-icons md-36 white">expand_more</span>
-            {dropdown?<LoginDropDown credits={credits}/>:null}
+            {dropdown?<LoginDropDown credits={credits} setDropdown={setDropdown}/>:null}
       </Typography>
       <NavModal/>
       </Box>}
