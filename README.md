@@ -4,7 +4,7 @@
 <p align="center">
     <img src="https://i.postimg.cc/k4hsyZY1/Site-Icon.png" width="118px" >
 </p>
-"Sasta Coupon" provides a platform to sell and buy coupons by listing your coupon in our site. With our platform you can make money from the coupons which may not be of immediate your to you.
+"Sasta Coupon" provides a platform to sell and buy coupons by listing your coupon in our site. With our platform people can make money from the coupons which may not be of immediate use to them.
 <br/>
 <br/>
 
