@@ -11,11 +11,12 @@
 .main2{
       
          display: flex;
-         
+         flex-direction: row;
          justify-content: center;
          left: 0;
          top: 25%;
          width: 100%;
+      
          
          
 }
@@ -25,17 +26,63 @@
     display: flex;
     flex-direction: column;
     width: 30%;
-    /* height: 100%;  */
+    /* background-color: brown; */
+  
+}
+
+.photo{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
    
+    width: 50%;
+    top:5%;
+    left:25%;
+    /* background-color: blue; */
    
 }
+.avatar{
+    position: relative;
+    width: 100%;
+    /* background-color: rgb(111, 255, 0); */
+}
+.upload{
+    position: relative;
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    padding-top:15%;
+    
+}
+.history{
+    position: relative;
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    padding-top:5%;
+}
+
+.button1{
+    position: relative;
+    width:90px; 
+    font-size: medium;
+    background-color:  #3C286D;
+    color: white;
+    text-align: center;
+    top:0%; 
+    border-radius: 25px;
+   
+}
+
+
+
 
 .profile2 {
     position: relative;
     display:flex;
     flex-direction: column;
     width: 70%;
-
     border-radius: 25px;
 }
 
@@ -57,8 +104,13 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width:50%;
+    /* width:50%; */
+    width: 'inherit';
     /* height:20%; */
+    /* background-color: chartreuse; */
+   
+    
+    
     
 }
 
@@ -66,8 +118,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width:50%;
-    margin: auto;
+    width: inherit;
+    margin: 1%;;
    
 }
 
@@ -82,7 +134,7 @@
     color: white;
     border-radius: 25px;
     padding: 1%;
-   
+    margin: 5%;
    
     
 }
@@ -93,7 +145,8 @@
     position: relative;
     top: 0%;
    
-    width:100%;
+    /* width:100%; */
+    width:inherit;
     text-align: left;
     font-size:large;
     color: rgb(7, 7, 77);
@@ -102,8 +155,6 @@
 }
 .perinfo1{
     position: relative;
-  
-   
     width:100%;
     text-align: left;
     font-size:large;
@@ -132,172 +183,38 @@
    
 }
 
-.photo{
-    position: relative;
-    /* height:45%; */
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    top:5%;
-    left:25%;
-   
-}
-.button1{
-    position: relative;
-    width:50%;
-    top:5%;
-    left :13%;
-    align-self: center;
-   
-    font-size: medium;
-    background-color:  #3C286D;
-    color: white;
-    height:20%;
-    border-radius: 25px;
-}
-.button2{
-    position: relative;
-    left :13%;
-    align-self: center;
-    /* font-weight: bolder;
-    font-size: larger; */
-    background-color: rgb(6, 6, 76);
-    color: white;
-    /* height:10%; */
-    border-radius: 25px;
-}
 
 button:hover{
     background: rgb(78, 78, 186);
 }
 
+@media screen and (max-width: 850px) {
 
-@media screen and (max-width: 1000px) {
-
-    .main2 {
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        left: 0;
-        top: 25%;
-        width: 100%;
-
-
-    }
-
-    .profile1 {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 40%;
-        left :25%;
-       
-       
-        height: 50%; 
-
-
-    }
-    .photo {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        top: 5%;
-        margin: 1%;;
-        
-    }
-    .button2 {
-         position: relative; 
-    }
-    .button1 {
-        position: relative;
-        width: 50%;
-        font-size: medium;
-        background-color: #3C286D;
-        color: white;
-        height: 20%;
-        margin :3%;
-        border-radius: 25px;
-    }
-    
-    .profile2 {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: left;
-        width: 50%;
-        left :25%;
-        margin: 3%;
-        border-radius: 25px;
+    .main2{
       
-    }
-
-    .profile21 {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 100%;   
-        
-    }
-
-    .profile22 {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        
-       
-    }
-
-
-     .fullname {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        /* height:20%; */
-
-    }
-
-    .fullname1 {
-        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 100%;
-        margin: auto;
-
-    } 
-
-    .fullname11 {
-        position: relative;
-        text-align: left;
-        top: 10%;
-        left: 0%;
-        width: 80%;
-        color: rgb(7, 7, 77);
-        font-size: small;
+        align-content: center;
+      
+ 
      
+        
+        
+}
+.profile1 {
+   
+    width: 50%;
+    left:25%;
+}
 
-    }
 
-    .fullname12 {
-        position: relative;
-        top: 13%;
-        text-align: left;
-        width: 80%;
-        color: rgb(7, 7, 77);
-        font-size: medium;
+.profile2 {
+    position: relative;
+    width: 50%;
+    left: 25%;
+    border-radius: 25px;
+}
 
-    }
-
-    .button{
-        position: relative;
-        width:25%; 
-        margin:3%;
-        left:20%;
-         
-    }
 
 }
