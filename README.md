@@ -1,3 +1,4 @@
+![CI/CD](https://github.com/hajaasmath/SastaCoupon-FE/workflows/SastaCoupon-FE-CI/CD/badge.svg)
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
