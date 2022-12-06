@@ -199,6 +199,7 @@ export default function UploadCoupon() {
           id="outlined-basic"
           label="Enter Coupon Name"
           variant="outlined"
+          defaultValue="coupon"
           error={formValues.couponName.error}
           helperText={
             formValues.couponName.error && formValues.couponName.errorMessage

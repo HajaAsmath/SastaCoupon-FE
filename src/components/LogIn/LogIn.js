@@ -31,7 +31,7 @@ export default function LogIn(props) {
     if (isSignIn) {
       if (isGuestSignIn) {
         setIsGuestLoading(true);
-        result = await signIn("test@gmail.com", "12345");
+        result = await signIn("test@pestoproject.com", "123456");
       } else {
         setIsLoading(true);
         e.preventDefault();
@@ -60,7 +60,7 @@ export default function LogIn(props) {
     return () => {
       document.querySelector(".nav").style.margin = "0px 0px 0px 0px";
     };
-  }, []);
+  }, [location]);
 
   return (
     <Box className="login-container">

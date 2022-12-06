@@ -8,20 +8,20 @@ export default function Faq() {
   useEffect(() => {
     const heading = document.querySelectorAll(".heading");
     const handleClick = (e) => {
-      if (e.target.childNodes[0].classList.contains("active")) {
-        e.target.childNodes[0].classList.remove("active");
+      if (e.currentTarget.childNodes[0].classList.contains("active")) {
+        e.currentTarget.childNodes[0].classList.remove("active");
       } else {
-        e.target.childNodes[0].classList.add("active");
+        e.currentTarget.childNodes[0].classList.add("active");
       }
-      if (e.target.childNodes[1].classList.contains("active")) {
-        e.target.childNodes[1].classList.remove("active");
+      if (e.currentTarget.childNodes[1].classList.contains("active")) {
+        e.currentTarget.childNodes[1].classList.remove("active");
       } else {
-        e.target.childNodes[1].classList.add("active");
+        e.currentTarget.childNodes[1].classList.add("active");
       }
-      if (e.target.nextElementSibling.classList.contains("active")) {
-        e.target.nextElementSibling.classList.remove("active");
+      if (e.currentTarget.nextElementSibling.classList.contains("active")) {
+        e.currentTarget.nextElementSibling.classList.remove("active");
       } else {
-        e.target.nextElementSibling.classList.add("active");
+        e.currentTarget.nextElementSibling.classList.add("active");
       }
     };
     heading.forEach((ele) => {

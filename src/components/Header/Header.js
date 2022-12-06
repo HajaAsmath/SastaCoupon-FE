@@ -1,6 +1,6 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./Header.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import Logo from "./Site_Icon.png";
 import NavModal from "./navModal/navModal";
@@ -13,6 +13,7 @@ export default function Header() {
   const navigate = useNavigate();
   const [dropdown, setDropdown] = useState(false);
   const [credits, setCredits] = useState(0);
+  const location = useLocation();
 
   useLayoutEffect(() => {
     function updateSize() {
@@ -39,6 +40,10 @@ export default function Header() {
     }
   };
 
+  useEffect(() => {
+    setDropdown(false);
+  }, [location]);
+
   return windowWidth > 769 ? (
     <Box component="nav" className="nav">
       <ul className="nav-list">
@@ -52,7 +57,7 @@ export default function Header() {
         <Link to="/upload-coupon">Sell your coupon</Link>
         <Typography variant="span" onClick={handleClick}>
           <span className="material-icons">person</span>
-          <span className="material-icons">expand_more</span>
+          {dropdown ? <span className="material-icons">expand_less</span>:<span className="material-icons">expand_more</span>}
         </Typography>
       </ul>
       {dropdown ? (
@@ -72,9 +77,7 @@ export default function Header() {
       </Link>
       <Typography variant="span" onClick={handleClick}>
         <span className="nav-icons material-icons md-36 white">person</span>
-        <span className="nav-icons material-icons md-36 white">
-          expand_more
-        </span>
+        {dropdown ? <span className="nav-icons material-icons md-36 white">expand_less</span>:<span className="nav-icons material-icons md-36 white">expand_more</span>}
         {dropdown ? (
           <LoginDropDown credits={credits} setDropdown={setDropdown} />
         ) : null}
