@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle */
+
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
 import "./ProdDet.css";
@@ -6,10 +6,12 @@ import { Box, Dialog, DialogContent, DialogContentText } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../Context/AuthProvider";
-import { BACKEND_BASE_URL } from "../../constants/Constants";
+import {
+  BACKEND_BASE_URL,
+  SESSION_STORAGE_KEY,
+} from "../../constants/Constants";
 
-// const __DEV__ = document.domain === "localhost"; // need to change while deploying"
-
+let seller_id;
 function loadScript(src) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
@@ -26,7 +28,7 @@ function loadScript(src) {
 
 export default function ProdDet() {
   const baseURL = BACKEND_BASE_URL;
-  // const baseURL = BACKEND_BASE_URL1;
+
 
   const path = "/razorpay";
   const path1 = "/proddet";
@@ -75,11 +77,11 @@ export default function ProdDet() {
   //* ********************Razorpay Integration********************************* */
   const [name] = useState("Mehul");
   async function displayRazorpay() {
-    if (coupon.SOLD === "1") {
+    console.log(coupon);
+    if (coupon.SOLD === 1) {
+      console.log("Inside Sold ")
       // <Alert severity="error">Coupon Already Sold</Alert>
       handleClickOpen();
-
-      // alert("Coupon Already Sold !!!");
     } else if (auth.getCurrentUser()) {
         const res = await loadScript(
           "https://checkout.razorpay.com/v1/checkout.js"
@@ -90,19 +92,23 @@ export default function ProdDet() {
           return;
         }
 
-        console.log(fullUrl);
+      
         let buyerId;
-        if (coupon.BUYER_ID == null) {
-          buyerId = "10";
-        } else {
-          buyerId = location.state.user_id;
-        }
-        
+        const { userId } = JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY));
+        console.log("Coupon Satte"+userId);
+        // if (coupon.BUYER_ID == null) {
+        //   buyerId = "10";
+        // } else {
+          buyerId = userId;
+        // }
+        console.log("Coupon Satte"+JSON.stringify(coupon));
         const data = await axios
           .post(fullUrl, {
             id: buyerId,
             amount: coupon.PRICE,
             coupon_id: coupon.ID,
+            seller_id:coupon.SELLER_ID || seller_id,
+            
           })
           .then((t) => t.data);
 
@@ -170,17 +176,19 @@ export default function ProdDet() {
     coupId = location.state.couponId;
   }
   useEffect(() => {
-
+      console.log(coupon);
     axios
       .get(fullUrl1, {
         params: { id: coupId },
       })
       .then((res) => {
+        console.log(res.data);
         coupId = res.data.ID;
         const year = res.data.EXPIRY.substring(0, 4);
         const month = res.data.EXPIRY.substring(5, 7);
         const day = res.data.EXPIRY.substring(8, 10);
         const date = day.concat("-", month, "-", year);
+        seller_id = res.data.SELLER_ID;
         value1 = {
           ID: res.data.ID,
           NAME: res.data.NAME,
@@ -206,7 +214,7 @@ export default function ProdDet() {
 
   return (
     <Box className="main1">
-      {open} &{" "}
+      
       <Dialog
         open={open}
         onClose={handleClose}
@@ -236,7 +244,7 @@ export default function ProdDet() {
           <strong>Terms and Conditions:</strong>
           <li>
             By using this card, you agree to the Cardholder Agreement at
-            redeem.giftcards.com. Participating brands may have their own card
+            SastaCoupon.com. Participating brands may have their own card
             terms, acceptance conditions and be subject to availability.
           </li>
           <li>
@@ -244,11 +252,7 @@ export default function ProdDet() {
             Treat this card like cash; no replacement if lost/stolen. Not
             reloadable; no cash redemption exception as required by law.
           </li>
-          <li>
-            {" "}
-            Redeem this card at redeem.giftcards.com for an egift(s) from one or
-            more of the participating merchants.
-          </li>
+         
         </Box>
       </div>
       <div className="coupon">
