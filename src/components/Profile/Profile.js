@@ -61,6 +61,7 @@ function Profile() {
         address_id: profile.ADDRESS_ID,
       })
       .then(() => {
+        alert("Saved Successfully");
       });
   };
   const handleHistory = async () => {
@@ -74,6 +75,7 @@ function Profile() {
 
   useEffect(() => {
     const { userId } = JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY));
+    console.log(userId);
     axios
       .get(fullUrl, {
         params: {
