@@ -42,7 +42,6 @@ function Profile() {
   // State to store image file
   const [file, setFile] = useState();
   function handleFile(e) {
-    console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
 
@@ -62,7 +61,6 @@ function Profile() {
         address_id: profile.ADDRESS_ID,
       })
       .then(() => {
-        alert("Saved Successfully");
       });
   };
   const handleHistory = async () => {
@@ -170,7 +168,6 @@ function Profile() {
                 style={{ width: 350 }}
                 onChange={(e) => {
                   setprofile({ ...profile, FIRST_NAME: e.target.value });
-                  console.log(profile);
                 }}
                 value={profile.FIRST_NAME}
               />
@@ -184,7 +181,6 @@ function Profile() {
                 style={{ width: 350 }}
                 onChange={(e) => {
                   setprofile({ ...profile, LAST_NAME: e.target.value });
-                  console.log(profile);
                 }}
                 value={profile.LAST_NAME}
               />

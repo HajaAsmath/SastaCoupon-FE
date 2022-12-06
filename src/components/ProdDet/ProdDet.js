@@ -12,7 +12,6 @@ import { BACKEND_BASE_URL } from "../../constants/Constants";
 
 function loadScript(src) {
   return new Promise((resolve) => {
-    console.log("Inside Load Razor");
     const script = document.createElement("script");
     script.src = src;
     script.onload = () => {
@@ -77,14 +76,11 @@ export default function ProdDet() {
   const [name] = useState("Mehul");
   async function displayRazorpay() {
     if (coupon.SOLD === "1") {
-      console.log("INside SOld checkl");
       // <Alert severity="error">Coupon Already Sold</Alert>
       handleClickOpen();
 
       // alert("Coupon Already Sold !!!");
-    } else {
-      console.log("Inside Dispaly Razor");
-      if (auth.getCurrentUser()) {
+    } else if (auth.getCurrentUser()) {
         const res = await loadScript(
           "https://checkout.razorpay.com/v1/checkout.js"
         );
@@ -108,12 +104,8 @@ export default function ProdDet() {
             amount: coupon.PRICE,
             coupon_id: coupon.ID,
           })
-          .then((t) => {
-            console.log(t);
-            return t.data;
-          });
+          .then((t) => t.data);
 
-        console.log(data);
 
         const options = {
           // key:"rzp_test_NpKUjWehxc13rP" ,         // need to change while deploying"
@@ -133,7 +125,6 @@ export default function ProdDet() {
                 alert("Bought/Sold Successfully");
               });
 
-            console.log(response);
             const obj = {
               transaction_id: response.razorpay_payment_id,
               order_id: response.razorpay_order_id,
@@ -169,20 +160,16 @@ export default function ProdDet() {
       } else {
         navigate("/logIn");
       }
-    }
   } // end of display razor
   let value1 = {};
   let coupId;
   //* ********************************Fetching Coupon Details**************************************/
-  // console.log(location.state.couponId)
-  console.log(location.state);
   if (location.state == null) {
     coupId = 1247;
   } else {
     coupId = location.state.couponId;
   }
   useEffect(() => {
-    console.log(`Inside PRodetais Useeefeect${coupId}`);
 
     axios
       .get(fullUrl1, {
@@ -212,7 +199,6 @@ export default function ProdDet() {
           ...value1,
         }));
 
-        console.log(coupon);
       });
   }, []);
 

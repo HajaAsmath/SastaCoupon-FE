@@ -27,7 +27,6 @@ function CouponHistory() {
   };
 
   useEffect(() => {
-    console.log(`Inside CouponHistory Useeefeect1${fullUrl}`);
     let id1;
     const fetchHistory = async () => {
       if (location.state == null) {
@@ -41,12 +40,8 @@ function CouponHistory() {
           params: { id: id1 },
         })
         .then((res) => {
-          console.log(res);
           const arr = res.data;
-          console.log(arr);
           setCouponsHistory(JSON.parse(arr));
-          console.log("History");
-          console.log(couponhistory);
         });
     };
 

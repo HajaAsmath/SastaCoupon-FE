@@ -19,8 +19,6 @@ export default function LandingPage() {
         if (res.status === 200) {
           setCoupons(JSON.parse(res.data));
           setIsLoading(false);
-        } else {
-          console.log("No data");
         }
       });
     };
