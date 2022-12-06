@@ -83,6 +83,7 @@ export default function LogIn(props) {
               id="outlined-basic"
               label="Email Address"
               variant="outlined"
+              onFocus={() => {setError(null)}}
               required
             />
           </Box>
@@ -95,6 +96,7 @@ export default function LogIn(props) {
               id="outlined-basic"
               label="Password"
               variant="outlined"
+              onFocus={() => {setError(null)}}
               required
             />
           </Box>
