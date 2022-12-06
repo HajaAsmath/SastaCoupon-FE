@@ -8,7 +8,7 @@ import axios from "axios";
 import { useAuth } from "../../Context/AuthProvider";
 import { BACKEND_BASE_URL } from "../../constants/Constants";
 
-const __DEV__ = document.domain === "localhost"; // need to change while deploying"
+// const __DEV__ = document.domain === "localhost"; // need to change while deploying"
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -90,12 +90,14 @@ export default function ProdDet() {
           return;
         }
 
+        console.log(fullUrl);
         let buyerId;
         if (coupon.BUYER_ID == null) {
           buyerId = "10";
         } else {
           buyerId = location.state.user_id;
         }
+        
         const data = await axios
           .post(fullUrl, {
             id: buyerId,
@@ -106,9 +108,8 @@ export default function ProdDet() {
 
 
         const options = {
-          key: __DEV__ ? "rzp_test_NpKUjWehxc13rP" : "PRODUCTION_KEY", // need to change while deploying"
-
-          // key: 'rzp_live_xPxs0PPQHo3DmY',
+          // key:"rzp_test_NpKUjWehxc13rP" ,         // need to change while deploying"
+           key: 'rzp_live_xPxs0PPQHo3DmY',
           currency: data.currency,
           amount: data.amount.toString(),
           order_id: data.id,
