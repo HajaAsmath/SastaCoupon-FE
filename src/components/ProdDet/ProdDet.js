@@ -108,8 +108,8 @@ export default function ProdDet() {
 
 
         const options = {
-          // key:"rzp_test_NpKUjWehxc13rP" ,         // need to change while deploying"
-           key: 'rzp_live_xPxs0PPQHo3DmY',
+          key:"rzp_test_NpKUjWehxc13rP" ,         // need to change while deploying"
+          //  key: 'rzp_live_xPxs0PPQHo3DmY',
           currency: data.currency,
           amount: data.amount.toString(),
           order_id: data.id,
