@@ -56,7 +56,7 @@ export function AuthProvider({ children }) {
         }
         return "User already exist";
       })
-      .catch(() => "Unexpected erorr occured. Please try again");
+      .catch((err) => err.response.data);
 
   const logOut = () => {
     localStorage.removeItem(SESSION_STORAGE_KEY);

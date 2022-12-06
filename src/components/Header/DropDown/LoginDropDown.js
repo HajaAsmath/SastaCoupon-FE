@@ -16,8 +16,7 @@ export default function LogInDropDown({ credits, setDropdown }) {
   return (
     <Box className="account-dropdown">
       <Typography variant="span">
-        Available Credits:
-        {credits} Credits
+        Available Credits: {credits || 0} Credits
       </Typography>
       <Link onClick={handleClick} to="/profile">
         Account Overview
