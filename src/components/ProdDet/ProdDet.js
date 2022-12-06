@@ -82,8 +82,6 @@ export default function ProdDet() {
       console.log("Inside Sold ")
       // <Alert severity="error">Coupon Already Sold</Alert>
       handleClickOpen();
-
-       alert("Coupon Already Sold !!!");
     } else if (auth.getCurrentUser()) {
         const res = await loadScript(
           "https://checkout.razorpay.com/v1/checkout.js"
