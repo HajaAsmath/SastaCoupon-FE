@@ -199,7 +199,6 @@ export default function UploadCoupon() {
           id="outlined-basic"
           label="Enter Coupon Name"
           variant="outlined"
-          defaultValue="coupon"
           error={formValues.couponName.error}
           helperText={
             formValues.couponName.error && formValues.couponName.errorMessage
@@ -239,7 +238,6 @@ export default function UploadCoupon() {
             labelId="select-label"
             id="demo-simple-select"
             label="Choose a image category"
-            defaultValue="Default"
             onChange={handleChange}
           >
             {[...images.keys()].map((item) => (
