@@ -24,6 +24,7 @@
   display: flex;
   list-style: none;
   font-size: larger;
+
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
@@ -50,4 +51,37 @@
   width: 5%;
   text-align: left;
   left: 2%;
+}
+
+@media screen and (max-width: 600px) {
+
+  .nav-list2 {
+    font-size: small;
+
+  }
+
+  .nav-list1 {
+    font-size: small;
+  }
+
+  /* .trans_type {
+    font-size: small;
+  } */
+
+  .image {
+    position: relative;
+    height: 80px;
+    width: 80px;
+    left: 15px;
+  }
+
+  /* .coupon_id{
+    font-size: small;
+  } */
+
+  /* .date{
+    font-size: small;
+  } */
+
+
 }

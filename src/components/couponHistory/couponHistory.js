@@ -59,12 +59,12 @@ function CouponHistory() {
 
       {currentPosts.map((coupons) => (
         <ul className="nav-list2 ">
-          <li>{coupons.COUPON_ID} </li>
+          <li className="coupon_id">{coupons.COUPON_ID} </li>
           <li>
             <img className="image" alt="coupon" src={coupons.URL} />
           </li>
           <li className="trans_type">{coupons.TRANSACTION_TYPE} </li>
-          <li>{coupons.PAYMENT_TIMESTAMP.slice(0, 10)} </li>
+          <li className="date">{coupons.PAYMENT_TIMESTAMP.slice(0, 10)} </li>
         </ul>
       ))}
 
