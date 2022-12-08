@@ -14,6 +14,7 @@
   font-size: xx-large;
   align-self: center;
   width: 25%;
+  word-wrap: break-word;
 }
 
 .success12 {

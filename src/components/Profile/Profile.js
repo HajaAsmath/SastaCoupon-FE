@@ -13,6 +13,7 @@ import {
   SESSION_STORAGE_KEY,
 } from "../../constants/Constants";
 
+
 function Profile() {
   const navigate = useNavigate();
   const baseURL = BACKEND_BASE_URL;
@@ -39,10 +40,15 @@ function Profile() {
     COUNTRY: "",
     ADDRESS_ID: "",
   });
+  // Image uplaod config
+
+ 
+  // const classes = useStyles();
   // State to store image file
   const [file, setFile] = useState();
-  function handleFile(e) {
+  async function handleFile(e) {
     setFile(URL.createObjectURL(e.target.files[0]));
+    console.log(file);
   }
 
   // Functinality for Save button
@@ -75,7 +81,7 @@ function Profile() {
 
   useEffect(() => {
     const { userId } = JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY));
-   
+
     axios
       .get(fullUrl, {
         params: {
@@ -126,25 +132,27 @@ function Profile() {
               />
             </div>
             <div className="upload">
-              <Button
-                className="button2"
-                variant="contained"
-                component="label"
-                sx={{
-                  ":hover": { backgroundColor: "#d11aff" },
-                  backgroundColor: "#3C286D",
-                  width: "inherit",
-                }}
-              >
-                Upload
-                <input
-                  hidden
-                  accept="image/*"
-                  multiple
-                  type="file"
-                  onChange={handleFile}
-                />
-              </Button>
+              
+                <Button
+                  className="button2"
+                  variant="contained"
+                  component="label"
+                  sx={{
+                    ":hover": { backgroundColor: "#d11aff" },
+                    backgroundColor: "#3C286D",
+                    width: "inherit",
+                  }}
+                >
+                  Upload
+                  <input
+                    hidden
+                    accept="image/*"
+                    multiple
+                    type="file"
+                    onChange={handleFile}
+                  />
+                </Button>
+            
             </div>
             <div className="history">
               <Button
@@ -165,9 +173,9 @@ function Profile() {
             <div className="fullname1">
               <label className="fullname11">First Name</label>
               <TextField
-                className="fullname12"
+                 className="fullname12"
                 size="small"
-                style={{ width: 350 }}
+                style={{ width:350 }}
                 onChange={(e) => {
                   setprofile({ ...profile, FIRST_NAME: e.target.value });
                 }}
