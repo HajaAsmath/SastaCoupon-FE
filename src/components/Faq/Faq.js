@@ -46,7 +46,7 @@ export default function Faq() {
           fontFamily: "patuaOne",
           lineHeight: "138.6%",
           textAlign: "left",
-          marginLeft: 10,
+          marginLeft: '5%',
           marginBottom: 3,
         }}
       >
@@ -60,7 +60,7 @@ export default function Faq() {
           fontFamily: "patuaOne",
           lineHeight: "138.6%",
           textAlign: "left",
-          marginLeft: 10,
+          marginLeft: '5%',
           marginBottom: 3,
         }}
       >
@@ -69,7 +69,7 @@ export default function Faq() {
       <Box sx={{ maxWidth: "90%" }}>
         <Box
           sx={{
-            marginLeft: 10,
+            marginLeft: '5%',
             marginBottom: 3,
             maxWidth: 912,
             textAlign: "left",
@@ -106,7 +106,7 @@ export default function Faq() {
         </Box>
         <Box
           sx={{
-            marginLeft: 10,
+            marginLeft: '5%',
             marginBottom: 3,
             maxWidth: 912,
             textAlign: "left",
@@ -142,7 +142,7 @@ export default function Faq() {
         </Box>
         <Box
           sx={{
-            marginLeft: 10,
+            marginLeft: '5%',
             marginBottom: 3,
             maxWidth: 912,
             textAlign: "left",
@@ -178,7 +178,7 @@ export default function Faq() {
         </Box>
         <Box
           sx={{
-            marginLeft: 10,
+            marginLeft: '5%',
             marginBottom: 3,
             maxWidth: 912,
             textAlign: "left",
@@ -215,7 +215,7 @@ export default function Faq() {
         </Box>
         <Box
           sx={{
-            marginLeft: 10,
+            marginLeft: '5%',
             marginBottom: 3,
             maxWidth: 912,
             textAlign: "left",
@@ -251,7 +251,7 @@ export default function Faq() {
         </Box>
         <Box
           sx={{
-            marginLeft: 10,
+            marginLeft: '5%',
             marginBottom: 3,
             maxWidth: 912,
             textAlign: "left",

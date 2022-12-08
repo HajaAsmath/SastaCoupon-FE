@@ -18,7 +18,7 @@
 .login-box {
   width: 780px;
   height: 600px;
-  margin: 40px;
+  margin: 40px 17px 0px;
   background-color: #19183f;
   border-radius: 28.1618px 28.1618px 28.1618px 28.1618px;
   display: flex;
