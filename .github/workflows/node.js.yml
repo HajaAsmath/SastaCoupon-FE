@@ -32,6 +32,8 @@ jobs:
         path: |
           **/node_modules
         key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+    - name: Set npm config
+      run: npm config set legacy-peer-deps true
     - name: Install dependencies
       run: npm install
     - name: Deploy react app to github pages
