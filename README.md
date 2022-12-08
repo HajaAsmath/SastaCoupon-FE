@@ -73,6 +73,9 @@ We tried to use a completely modern tech stack while testing out some new techno
 - [Cyclic](https://app.cyclic.sh/#/)
 - [Github Pages](https://pages.github.com/)
 - [Memcache](https://memcached.org/)
+- [Swagger](https://swagger.io/)
+- [Airbnb Eslint](https://www.npmjs.com/package/eslint-config-airbnb)
+- [Prettier](https://prettier.io/)
 
 <br/>
 
