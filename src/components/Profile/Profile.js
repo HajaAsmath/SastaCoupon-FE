@@ -48,7 +48,6 @@ function Profile() {
   const [file, setFile] = useState();
   async function handleFile(e) {
     setFile(URL.createObjectURL(e.target.files[0]));
-    console.log(file);
   }
 
   // Functinality for Save button
