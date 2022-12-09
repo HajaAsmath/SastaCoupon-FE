@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
 import LandingPageCard from "./LandingPageCard/LandingPageCard";
 import bannerImage from "./banner_image.png";
 import axios from "../../common/axiosInstance";
@@ -31,7 +32,8 @@ export default function LandingPage() {
       <Box className="banner-container">
         <Box className="banner-text">
           <p>Your Coupon, Your Choice</p>
-          <p>Buy coupon codes from multiple brands</p>
+          <Typography sx={{fontFamily: 'Poppins', 
+          fontSize: '22px'}}>Buy coupon codes from multiple brands</Typography>
           <Link to="/discover">
             <Button size="medium" className="primary-button">
               Buy Now

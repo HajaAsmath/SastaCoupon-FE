@@ -78,10 +78,10 @@ export default function ContactUs() {
       className="contact-us"
       sx={{
         maxWidth: "50%",
-        minWidth: "340px",
+        minWidth: "250px",
         boxShadow: "0px 0px 7px 2px rgba(0, 0, 0, 0.10)",
         borderRadius: "5px",
-        margin: "50px auto",
+        margin: "30px auto",
         padding: "50px",
       }}
     >

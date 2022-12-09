@@ -42,6 +42,7 @@ export default function Header() {
 
   useEffect(() => {
     setDropdown(false);
+    window.scrollTo(0, 0);
   }, [location]);
 
   return windowWidth > 769 ? (
