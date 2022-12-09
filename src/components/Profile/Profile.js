@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import "./Profile.css";
 import axios from "axios";
 import Box from "@mui/material/Box";
@@ -14,12 +14,33 @@ import {
 } from "../../constants/Constants";
 
 
+
+
 function Profile() {
+  const menuRef = useRef();
   const navigate = useNavigate();
   const baseURL = BACKEND_BASE_URL;
   const path = "/profile";
   const fullUrl = baseURL.concat(path);
+  const [file, setFile] = useState();
+  const [open, setOpen] = useState(false);
 
+  function DropdownItem(props){
+    const image = props.img;
+    function handleclickf(e){   
+      setFile(props.img);
+      setOpen(false);  
+    }
+
+    
+    return(
+      
+      open && <li className = 'dropdownItem' onClick={handleclickf}>
+        <img className = "img" src={image} alt="" />
+        <a> {props.text} </a>
+      </li>
+    );
+  }
   let firstName = "";
   let lastName;
   let emailId;
@@ -40,18 +61,17 @@ function Profile() {
     COUNTRY: "",
     ADDRESS_ID: "",
   });
-  // Image uplaod config
-
  
-  // const classes = useStyles();
-  // State to store image file
-  const [file, setFile] = useState();
+  
   async function handleFile(e) {
-    setFile(URL.createObjectURL(e.target.files[0]));
+    // setFile(URL.createObjectURL(e.target.files[0]));
+    setOpen(!open)
+    console.log(file);
   }
 
   // Functinality for Save button
   const handleSave = async () => {
+    console.log("Address"+profile.ADDRESS_ID);
     axios
       .post(fullUrl, {
         id: profile.ID, //   change to dynamic once connection is done
@@ -64,9 +84,10 @@ function Profile() {
         country: profile.COUNTRY,
         zipcode: profile.ZIP_CODE,
         address_id: profile.ADDRESS_ID,
+        profile_img :file
       })
       .then(() => {
-        // alert("Saved Successfully");
+        alert("Saved Successfully");
       });
   };
   const handleHistory = async () => {
@@ -79,8 +100,17 @@ function Profile() {
   };
 
   useEffect(() => {
+
+    let handler = (e)=>{
+      if(!menuRef.current.contains(e.target)){
+        setOpen(false);
+        console.log(menuRef.current);
+      }    }  
     const { userId } = JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY));
 
+    console.log(userId);
+
+   console.log(fullUrl);
     axios
       .get(fullUrl, {
         params: {
@@ -88,12 +118,14 @@ function Profile() {
         },
       })
       .then((res) => {
+        console.log(res.data);
         firstName = res.data.FIRST_NAME;
         lastName = res.data.LAST_NAME;
         emailId = res.data.EMAIL_ID;
         contact = res.data.CONTACT;
         street = res.data.STREET;
         zipCode = res.data.ZIPCODE;
+        setFile(res.data.PROFILE_IMG);
         let updatedValue = {};
 
         updatedValue = {
@@ -107,7 +139,7 @@ function Profile() {
           STATE: res.data.STATE,
           COUNTRY: res.data.COUNTRY,
           ZIP_CODE: zipCode,
-          ADDRESSS_ID: res.data.ADDRESSS_ID,
+          ADDRESS_ID: res.data.ADDRESS_ID,
         };
         setprofile((item) => ({
           ...item,
@@ -131,28 +163,31 @@ function Profile() {
               />
             </div>
             <div className="upload">
+
+              <Button
+                className="button2"
+                variant="contained"
+                component="label"
+                sx={{
+                  ":hover": { backgroundColor: "#d11aff" },
+                  backgroundColor: "#3C286D",
+                  width: "inherit",
+                }}
+                onClick={() => { setOpen(!open) }}
+              >
+                Choose Avtar
+              </Button>
               
-                <Button
-                  className="button2"
-                  variant="contained"
-                  component="label"
-                  sx={{
-                    ":hover": { backgroundColor: "#d11aff" },
-                    backgroundColor: "#3C286D",
-                    width: "inherit",
-                  }}
-                >
-                  Upload
-                  <input
-                    hidden
-                    accept="image/*"
-                    multiple
-                    type="file"
-                    onChange={handleFile}
-                  />
-                </Button>
-            
+
+
             </div>
+            {/* <div className="dropdown-menu" > */}
+            <div className={`dropdown-menu ${open? 'active' : 'inactive'}`} >
+                <ul>
+                  <DropdownItem img="https://i.postimg.cc/m2FycyHY/man.png" text="Male" />
+                  <DropdownItem img="https://i.postimg.cc/9fVSQczR/woman1.png" text="Female" /> 
+                </ul>
+              </div>
             <div className="history">
               <Button
                 sx={{ width: "inherit", backgroundColor: "#3C286D" }}
@@ -172,9 +207,9 @@ function Profile() {
             <div className="fullname1">
               <label className="fullname11">First Name</label>
               <TextField
-                 className="fullname12"
+                className="fullname12"
                 size="small"
-                style={{ width:350 }}
+                style={{ width: 350 }}
                 onChange={(e) => {
                   setprofile({ ...profile, FIRST_NAME: e.target.value });
                 }}
@@ -211,6 +246,7 @@ function Profile() {
               <label className="fullname11">Email</label>
               <TextField
                 className="fullname12"
+                disabled = "true"
                 type="email"
                 size="small"
                 style={{ width: 350 }}
