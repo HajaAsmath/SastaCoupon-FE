@@ -61,7 +61,7 @@ a {
   border-radius: 50px !important;
   color: black !important;
   font-family: patuaOne !important;
-  margin: 15px !important;
+  margin: 15px 0px !important;
 }
 
 .primary-button:hover {
