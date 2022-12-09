@@ -128,7 +128,6 @@ export default function ProdDet() {
                 id: coupon.ID, //   change to dynamic once connection is done
               })
               .then(() => {
-                alert("Bought/Sold Successfully");
               });
 
             const obj = {

@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./Header.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Logo from "./Site_Icon.png";
 import NavModal from "./navModal/navModal";
 import LoginDropDown from "./DropDown/LoginDropDown";
@@ -56,10 +56,13 @@ export default function Header() {
         </Link>
         <Link to="/faq">FAQ</Link>
         <Link to="/upload-coupon">Sell your coupon</Link>
-        <Typography variant="span" onClick={handleClick}>
+        <Button variant="span" onClick={handleClick} sx={{  
+        background: 'none!important',
+        border: 'none',
+        padding: '0!important'}}>
           <span className="material-icons">person</span>
           {dropdown ? <span className="material-icons">expand_less</span>:<span className="material-icons">expand_more</span>}
-        </Typography>
+        </Button>
       </ul>
       {dropdown ? (
         <LoginDropDown credits={credits} setDropdown={setDropdown} />

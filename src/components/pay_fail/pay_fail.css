@@ -4,16 +4,15 @@
   justify-content: center;
   width: 100%;
   left: 50%;
-  height: 200%;
+  margin: 78px 0px;
 }
 
 .success11 {
   position: relative;
   color: rgb(10, 10, 83);
   font-weight: bolder;
-  font-size: xx-large;
+  font-size: 28px;
   align-self: center;
-  width: 25%;
 }
 
 .success12 {

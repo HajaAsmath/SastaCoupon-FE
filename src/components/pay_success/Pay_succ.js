@@ -27,7 +27,7 @@ function PaySucc() {
     });
   }
   return (
-    <Box className="success1" sx={{height: 465}}>
+    <Box className="success1">
       <div className="success11">
         Order placed successfully
         <Typography>Order id: {location.state.order_id}</Typography>
