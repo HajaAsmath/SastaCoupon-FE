@@ -88,3 +88,9 @@
 
 
 }
+
+@media screen and (max-width: 466px) {
+  .table-container{
+    width: 92%;
+  }
+}
