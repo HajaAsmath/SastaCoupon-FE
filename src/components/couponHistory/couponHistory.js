@@ -48,7 +48,7 @@ function CouponHistory() {
     fetchHistory();
   }, []);
   return (
-    <div>
+    <div className="table-container">
       <ul className="nav-list1 ">
         <li>Coupon Id</li>
         <li>Coupon</li>
@@ -63,7 +63,7 @@ function CouponHistory() {
           <li>
             <img className="image" alt="coupon" src={coupons.URL} />
           </li>
-          <li className="trans_type">{coupons.TRANSACTION_TYPE} </li>
+          <li className="trans_type">{coupons.TRANSACTION_TYPE.toUpperCase()} </li>
           <li className="date">{coupons.PAYMENT_TIMESTAMP.slice(0, 10)} </li>
         </ul>
       ))}
