@@ -40,8 +40,8 @@ Welcome! we hope you enjoy the site as much as we enjoyed making it.
 
 A "login by test account" button is provided to start using the application with test account or use the following credentials.
 
-<span><b>Email</b>: test@gmail.com</span>
-<span><b>Password:</b> 12345</span>
+<span><b>Email</b>: test@pestoproject.com</span>
+<span><b>Password:</b> 123456</span>
 
 # Installation
 
