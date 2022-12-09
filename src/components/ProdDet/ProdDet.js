@@ -213,7 +213,7 @@ export default function ProdDet() {
   //* *************************************************** */
 
   return (
-    <Box className="main1">
+    <Box className="main1" sx={{margin: '20px 0px 32px'}}>
       
       <Dialog
         open={open}
