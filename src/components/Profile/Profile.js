@@ -184,8 +184,8 @@ function Profile() {
             {/* <div className="dropdown-menu" > */}
             <div className={`dropdown-menu ${open? 'active' : 'inactive'}`} >
                 <ul>
-                  <DropdownItem img="https://i.postimg.cc/m2FycyHY/man.png" text="Avatar1" />
-                  <DropdownItem img="https://i.postimg.cc/d0QWTTvJ/woman.png" text="Avatar2" /> 
+                  <DropdownItem img="https://i.postimg.cc/m2FycyHY/man.png" text="Male" />
+                  <DropdownItem img="https://i.postimg.cc/9fVSQczR/woman1.png" text="Female" /> 
                 </ul>
               </div>
             <div className="history">
