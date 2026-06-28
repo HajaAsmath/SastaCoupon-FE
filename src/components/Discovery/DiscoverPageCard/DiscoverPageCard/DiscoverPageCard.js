@@ -1,47 +1,36 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Box from "@mui/material/Box";
-import "./DiscoverPageCard.css";
 import { Link } from "react-router-dom";
 
-export default function DiscoverPageCard(props) {
-  const { couponId, couponName, couponImage, couponPrice } = props;
-
+export default function DiscoverPageCard({ couponId, couponName, couponImage, couponPrice }) {
   return (
     <Link
-      state={{
-        couponId,
-        couponName,
-        couponImage,
-        couponPrice,
-      }}
       to="/prod-det"
+      state={{ couponId, couponName, couponImage, couponPrice }}
+      className="group block"
     >
-      <Card
-        className="discovery-card"
-        sx={{
-          minWidth: 209,
-          maxHeight: 256,
-          borderRadius: 2,
-          backgroundColor: "#F7FAFC",
-          boxShadow: "0px 1px 6px rgba(0, 0, 0, 0.35)",
-          margin: "10px",
-        }}
-      >
-        <CardMedia
-          sx={{ height: 126, width: "inherit", margin: "0 auto" }}
-          component="img"
-          image={couponImage}
-          alt="green iguana"
-        />
-        <Box className="card-content">
-          <CardContent sx={{ textAlign: "left", padding: "5px 16px" }}>
-            <span>{couponName}</span>
-            <p>{couponPrice} Credits</p>
-          </CardContent>
-        </Box>
-      </Card>
+      <div className="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-100 transition-all duration-300 group-hover:shadow-card-hover group-hover:-translate-y-1 h-full flex flex-col">
+        <div className="relative overflow-hidden bg-slate-50 h-36 flex-shrink-0">
+          <img
+            src={couponImage}
+            alt={couponName}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+        </div>
+        <div className="p-4 flex flex-col flex-1">
+          <h3 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-snug mb-auto group-hover:text-primary-600 transition-colors">
+            {couponName}
+          </h3>
+          <div className="flex items-center justify-between mt-3">
+            <p className="text-base font-extrabold text-primary-600">
+              {couponPrice}
+              <span className="text-xs font-medium text-slate-500 ml-0.5">cr</span>
+            </p>
+            <span className="text-xs font-bold text-primary-600 bg-primary-50 px-2.5 py-1 rounded-lg group-hover:bg-primary-600 group-hover:text-white transition-colors">
+              Buy
+            </span>
+          </div>
+        </div>
+      </div>
     </Link>
   );
 }

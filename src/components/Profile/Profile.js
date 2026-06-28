@@ -1,54 +1,29 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useEffect,useRef } from "react";
-import "./Profile.css";
-import axios from "axios";
-import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  BACKEND_BASE_URL,
-  SESSION_STORAGE_KEY,
-} from "../../constants/Constants";
+import { motion } from "framer-motion";
+import axios from "../../common/axiosInstance";
+import { BACKEND_BASE_URL, SESSION_STORAGE_KEY } from "../../constants/Constants";
 
+const AVATAR_OPTIONS = [
+  { img: "https://i.postimg.cc/m2FycyHY/man.png", label: "Male" },
+  { img: "https://i.postimg.cc/9fVSQczR/woman1.png", label: "Female" },
+];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.08, duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+  }),
+};
 
-
-function Profile() {
-  const menuRef = useRef();
+export default function Profile() {
   const navigate = useNavigate();
-  const baseURL = BACKEND_BASE_URL;
-  const path = "/profile";
-  const fullUrl = baseURL.concat(path);
-  const [file, setFile] = useState();
-  const [open, setOpen] = useState(false);
-
-  function DropdownItem(props){
-    const image = props.img;
-    function handleclickf(e){   
-      setFile(props.img);
-      setOpen(false);  
-    }
-
-    
-    return(
-      
-      open && <li className = 'dropdownItem' onClick={handleclickf}>
-        <img className = "img" src={image} alt="" />
-        <a> {props.text} </a>
-      </li>
-    );
-  }
-  let firstName = "";
-  let lastName;
-  let emailId;
-  let contact;
-  let street;
-  let zipCode;
-
-  const [profile, setprofile] = useState({
+  const [avatarOpen, setAvatarOpen] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [profile, setProfile] = useState({
     ID: "",
     FIRST_NAME: "",
     LAST_NAME: "",
@@ -61,286 +36,218 @@ function Profile() {
     COUNTRY: "",
     ADDRESS_ID: "",
   });
- 
-  
-  async function handleFile(e) {
-    // setFile(URL.createObjectURL(e.target.files[0]));
-    setOpen(!open)
-    console.log(file);
-  }
-
-  // Functinality for Save button
-  const handleSave = async () => {
-    console.log("Address"+profile.ADDRESS_ID);
-    axios
-      .post(fullUrl, {
-        id: profile.ID, //   change to dynamic once connection is done
-        firstname: profile.FIRST_NAME,
-        lastname: profile.LAST_NAME,
-        contact: profile.CONTACT,
-        street: profile.STREET,
-        city: profile.CITY,
-        state: profile.STATE,
-        country: profile.COUNTRY,
-        zipcode: profile.ZIP_CODE,
-        address_id: profile.ADDRESS_ID,
-        profile_img :file
-      })
-      .then(() => {
-        alert("Saved Successfully");
-      });
-  };
-  const handleHistory = async () => {
-    const obj = {
-      id: profile.ID,
-    };
-    navigate("/coupon-history", {
-      state: obj,
-    });
-  };
+  const [avatarImg, setAvatarImg] = useState(null);
 
   useEffect(() => {
-
-    let handler = (e)=>{
-      if(!menuRef.current.contains(e.target)){
-        setOpen(false);
-        console.log(menuRef.current);
-      }    }  
     const { userId } = JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY));
-
-    console.log(userId);
-
-   console.log(fullUrl);
     axios
-      .get(fullUrl, {
-        params: {
-          id: userId,
-        },
-      })
+      .get(`${BACKEND_BASE_URL}/profile`, { params: { id: userId } })
       .then((res) => {
-        console.log(res.data);
-        firstName = res.data.FIRST_NAME;
-        lastName = res.data.LAST_NAME;
-        emailId = res.data.EMAIL_ID;
-        contact = res.data.CONTACT;
-        street = res.data.STREET;
-        zipCode = res.data.ZIPCODE;
-        setFile(res.data.PROFILE_IMG);
-        let updatedValue = {};
-
-        updatedValue = {
-          ID: res.data.ID,
-          FIRST_NAME: res.data.FIRST_NAME,
-          LAST_NAME: res.data.LAST_NAME,
-          EMAIL_ID: emailId,
-          CONTACT: contact,
-          STREET: street,
-          CITY: res.data.CITY,
-          STATE: res.data.STATE,
-          COUNTRY: res.data.COUNTRY,
-          ZIP_CODE: zipCode,
-          ADDRESS_ID: res.data.ADDRESS_ID,
-        };
-        setprofile((item) => ({
-          ...item,
-          ...updatedValue,
-        }));
+        const d = res.data;
+        setAvatarImg(d.PROFILE_IMG);
+        setProfile({
+          ID: d.ID,
+          FIRST_NAME: d.FIRST_NAME || "",
+          LAST_NAME: d.LAST_NAME || "",
+          EMAIL_ID: d.EMAIL_ID || "",
+          CONTACT: d.CONTACT || "",
+          STREET: d.STREET || "",
+          CITY: d.CITY || "",
+          STATE: d.STATE || "",
+          ZIP_CODE: d.ZIPCODE || "",
+          COUNTRY: d.COUNTRY || "",
+          ADDRESS_ID: d.ADDRESS_ID || "",
+        });
       });
   }, []);
 
+  const field = (key) => ({
+    value: profile[key],
+    onChange: (e) => setProfile((p) => ({ ...p, [key]: e.target.value })),
+  });
+
+  const handleSave = async () => {
+    setSaving(true);
+    await axios.post(`${BACKEND_BASE_URL}/profile`, {
+      id: profile.ID,
+      firstname: profile.FIRST_NAME,
+      lastname: profile.LAST_NAME,
+      contact: profile.CONTACT,
+      street: profile.STREET,
+      city: profile.CITY,
+      state: profile.STATE,
+      country: profile.COUNTRY,
+      zipcode: profile.ZIP_CODE,
+      address_id: profile.ADDRESS_ID,
+      profile_img: avatarImg,
+    });
+    setSaving(false);
+    setSaved(true);
+    setTimeout(() => setSaved(false), 3000);
+  };
+
   return (
-    <Box className="mainbox">
-      <div className="main2">
-        <div className="profile1">
-          <div className="photo">
-            <div className="avatar">
-              <Avatar
-                className="avatar"
-                alt="Remy Sharp"
-                src={file}
-                sx={{ width: "inherit", height: 200, color: "darkgrey" }}
-                variant="square"
-              />
-            </div>
-            <div className="upload">
+    <div className="min-h-screen bg-slate-50 py-10">
+      <div className="section-container max-w-5xl">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+        >
+          {/* Header */}
+          <motion.div variants={fadeUp} className="mb-8">
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Account</h1>
+            <p className="text-slate-500 mt-1">Manage your profile and preferences</p>
+          </motion.div>
 
-              <Button
-                className="button2"
-                variant="contained"
-                component="label"
-                sx={{
-                  ":hover": { backgroundColor: "#d11aff" },
-                  backgroundColor: "#3C286D",
-                  width: "inherit",
-                }}
-                onClick={() => { setOpen(!open) }}
-              >
-                Choose Avtar
-              </Button>
-              
+          <div className="grid lg:grid-cols-3 gap-6">
+            {/* ── Left: Avatar Panel ──────────────────────────── */}
+            <motion.div variants={fadeUp} className="lg:col-span-1">
+              <div className="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden">
+                <div className="h-24 bg-violet-gradient" />
+                <div className="px-6 pb-6">
+                  <div className="relative -mt-12 mb-4">
+                    <div className="w-20 h-20 rounded-2xl border-4 border-white shadow-card overflow-hidden bg-slate-100">
+                      {avatarImg ? (
+                        <img src={avatarImg} alt="avatar" className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-3xl bg-primary-50">
+                          👤
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <h2 className="font-bold text-slate-900 text-lg">
+                    {profile.FIRST_NAME || "Your"} {profile.LAST_NAME || "Name"}
+                  </h2>
+                  <p className="text-slate-500 text-sm mt-0.5">{profile.EMAIL_ID}</p>
 
+                  <div className="mt-5 relative">
+                    <button
+                      onClick={() => setAvatarOpen((v) => !v)}
+                      className="btn-secondary w-full justify-center text-sm"
+                    >
+                      Choose Avatar
+                    </button>
+                    {avatarOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95, y: -4 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-float border border-slate-100 p-2 z-10"
+                      >
+                        {AVATAR_OPTIONS.map((opt) => (
+                          <button
+                            key={opt.label}
+                            onClick={() => { setAvatarImg(opt.img); setAvatarOpen(false); }}
+                            className="flex items-center gap-3 w-full px-3 py-2 rounded-lg hover:bg-primary-50 transition-colors"
+                          >
+                            <img src={opt.img} alt={opt.label} className="w-9 h-9 rounded-xl object-cover" />
+                            <span className="text-sm font-medium text-slate-700">{opt.label}</span>
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </div>
 
-            </div>
-            {/* <div className="dropdown-menu" > */}
-            <div className={`dropdown-menu ${open? 'active' : 'inactive'}`} >
-                <ul>
-                  <DropdownItem img="https://i.postimg.cc/m2FycyHY/man.png" text="Male" />
-                  <DropdownItem img="https://i.postimg.cc/9fVSQczR/woman1.png" text="Female" /> 
-                </ul>
+                  <button
+                    onClick={() => navigate("/coupon-history", { state: { id: profile.ID } })}
+                    className="btn-ghost w-full justify-center mt-2 text-slate-600"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                    View History
+                  </button>
+                </div>
               </div>
-            <div className="history">
-              <Button
-                sx={{ width: "inherit", backgroundColor: "#3C286D" }}
-                onClick={handleHistory}
-                variant="contained"
-                component="label"
-              >
-                History
-              </Button>
-            </div>
-          </div>
-        </div>
+            </motion.div>
 
-        <div className="profile2">
-          <label className="perinfo">Personal Information</label>
-          <div className="profile21">
-            <div className="fullname1">
-              <label className="fullname11">First Name</label>
-              <TextField
-                className="fullname12"
-                size="small"
-                style={{ width: 350 }}
-                onChange={(e) => {
-                  setprofile({ ...profile, FIRST_NAME: e.target.value });
-                }}
-                value={profile.FIRST_NAME}
-              />
-            </div>
-            <div className="fullname1">
-              <label className="fullname11">Last Name</label>
-              <TextField
-                className="fullname12"
-                type="text"
-                size="small"
-                style={{ width: 350 }}
-                onChange={(e) => {
-                  setprofile({ ...profile, LAST_NAME: e.target.value });
-                }}
-                value={profile.LAST_NAME}
-              />
-            </div>
-            <div className="fullname1">
-              <label className="fullname11">Contact Nos</label>
-              <TextField
-                className="fullname12"
-                type="number"
-                size="small"
-                style={{ width: 350 }}
-                onChange={(e) =>
-                  setprofile({ ...profile, CONTACT: e.target.value })
-                }
-                value={profile.CONTACT}
-              />
-            </div>
-            <div className="fullname1">
-              <label className="fullname11">Email</label>
-              <TextField
-                className="fullname12"
-                disabled = "true"
-                type="email"
-                size="small"
-                style={{ width: 350 }}
-                onChange={(e) =>
-                  setprofile({ ...profile, EMAIL_ID: e.target.value })
-                }
-                value={profile.EMAIL_ID}
-              />
-            </div>
-          </div>
-          <label className="perinfo">Address</label>
-          <div className="profile22">
-            <div className="fullname1">
-              <label className="fullname11">Street</label>
-              <TextField
-                className="fullname12"
-                size="small"
-                style={{ width: 350 }}
-                onChange={(e) =>
-                  setprofile({ ...profile, STREET: e.target.value })
-                }
-                value={profile.STREET}
-              />
-            </div>
-            <div className="fullname1">
-              <label className="fullname11">City</label>
-              <TextField
-                className="fullname12"
-                size="small"
-                style={{ width: 350 }}
-                onChange={(e) =>
-                  setprofile({ ...profile, CITY: e.target.value })
-                }
-                value={profile.CITY}
-              />
-            </div>
-            <div className="fullname1">
-              <label className="fullname11">State</label>
-              <TextField
-                className="fullname12"
-                size="small"
-                style={{ width: 350 }}
-                onChange={(e) =>
-                  setprofile({ ...profile, STATE: e.target.value })
-                }
-                value={profile.STATE}
-              />
-            </div>
-            <div className="fullname1">
-              <label className="fullname11">Zip Code</label>
-              <TextField
-                className="fullname12"
-                type="number"
-                size="small"
-                style={{ width: 350 }}
-                onChange={(e) =>
-                  setprofile({ ...profile, ZIP_CODE: e.target.value })
-                }
-                value={profile.ZIP_CODE}
-              />
-            </div>
-            <div className="fullname1">
-              <label className="fullname11">Country</label>
-              <TextField
-                className="fullname12"
-                size="small"
-                style={{ width: 350 }}
-                onChange={(e) =>
-                  setprofile({ ...profile, ZIP_CODE: e.target.value })
-                }
-                value={profile.COUNTRY}
-              />
-            </div>
-          </div>
+            {/* ── Right: Form ─────────────────────────────────── */}
+            <motion.div variants={fadeUp} className="lg:col-span-2 space-y-6">
+              {/* Personal Info */}
+              <div className="bg-white rounded-2xl shadow-card border border-slate-100 p-6">
+                <h3 className="font-bold text-slate-900 mb-5 flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600 text-xs">👤</span>
+                  Personal Information
+                </h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <FormField label="First Name" {...field("FIRST_NAME")} />
+                  <FormField label="Last Name" {...field("LAST_NAME")} />
+                  <FormField label="Email" type="email" disabled {...field("EMAIL_ID")} />
+                  <FormField label="Contact" type="tel" {...field("CONTACT")} />
+                </div>
+              </div>
 
-          <div>
-            <Button
-              sx={{
-                alignSelf: "center",
-                margin: 3,
-                width: 200,
-                backgroundColor: "#3C286D",
-              }}
-              onClick={handleSave}
-              variant="contained"
-              component="label"
-            >
-              Save
-            </Button>
+              {/* Address */}
+              <div className="bg-white rounded-2xl shadow-card border border-slate-100 p-6">
+                <h3 className="font-bold text-slate-900 mb-5 flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-lg bg-secondary-400/20 flex items-center justify-center text-secondary-600 text-xs">📍</span>
+                  Address
+                </h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="sm:col-span-2">
+                    <FormField label="Street" {...field("STREET")} />
+                  </div>
+                  <FormField label="City" {...field("CITY")} />
+                  <FormField label="State" {...field("STATE")} />
+                  <FormField label="Zip Code" type="number" {...field("ZIP_CODE")} />
+                  <FormField label="Country" {...field("COUNTRY")} />
+                </div>
+              </div>
+
+              {/* Save Button */}
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handleSave}
+                  disabled={saving}
+                  className="btn-primary px-8 py-3 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {saving ? (
+                    <>
+                      <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z" />
+                      </svg>
+                      Saving…
+                    </>
+                  ) : "Save Changes"}
+                </button>
+                {saved && (
+                  <motion.span
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="flex items-center gap-1.5 text-sm font-medium text-emerald-600"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Saved successfully
+                  </motion.span>
+                )}
+              </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </Box>
+    </div>
   );
 }
 
-export default Profile;
+function FormField({ label, disabled, type = "text", value, onChange }) {
+  return (
+    <div>
+      <label className="block text-xs font-semibold text-slate-500 mb-1.5 uppercase tracking-wide">
+        {label}
+      </label>
+      <input
+        type={type}
+        value={value}
+        onChange={onChange}
+        disabled={disabled}
+        className={`input-field ${disabled ? "opacity-60 cursor-not-allowed bg-slate-100" : ""}`}
+        placeholder={label}
+      />
+    </div>
+  );
+}

@@ -1,38 +1,38 @@
+/* App shell — layout handled by Tailwind */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+/* MUI theme overrides — keep MUI components in sync with design system */
+.MuiTextField-root .MuiOutlinedInput-root {
+  border-radius: 12px;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.MuiTextField-root .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #7c3aed;
+  border-width: 2px;
+}
+
+.MuiTextField-root .MuiInputLabel-root.Mui-focused {
+  color: #7c3aed;
+}
+
+.MuiButton-root {
+  font-family: "Inter", system-ui, sans-serif !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  letter-spacing: 0 !important;
+}
+
+/* Date picker themed */
+.MuiPickersDay-root.Mui-selected {
+  background-color: #7c3aed !important;
+}
+
+.MuiPickersDay-root:not(.Mui-selected):hover {
+  background-color: #ede9fe !important;
 }

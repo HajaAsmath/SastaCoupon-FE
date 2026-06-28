@@ -1,63 +1,49 @@
-import { Button, Divider, List } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
 import CaptureDate from "./CaptureDate";
 import DiscoveryAmount from "./DiscoveryAmount";
-import DiscoveryHeading from "./DiscoveryHeading";
-import "./DiscoveryFilter.css";
 
-export default function DiscoveryFilter({
-  handleFilterClick,
-  sx,
-  denomError,
-  expiryDateError,
-}) {
+export default function DiscoveryFilter({ handleFilterClick, denomError, compact }) {
   const [, setSearchParams] = useSearchParams();
 
-  const handleResetClick = () => {
-    setSearchParams("");
-  };
+  const handleResetClick = () => setSearchParams("");
 
   return (
-    <List sx={sx} className="filter-list">
-      <Divider component="li" />
-      <DiscoveryHeading heading="Filter By Amount">
-        <List sx={{ padding: "8px 16px" }} component="div">
+    <div className={`${compact ? "p-4" : "p-6"} space-y-6`}>
+      <div>
+        <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">
+          Filter by Amount
+        </h3>
+        <div className="space-y-3">
           <DiscoveryAmount heading="Min" />
-        </List>
-        <List sx={{ padding: "8px 16px" }} component="div">
           <DiscoveryAmount heading="Max" error={denomError} />
-        </List>
-      </DiscoveryHeading>
-      <Divider component="li" />
-      <DiscoveryHeading heading="Filter By Expiry Date">
-        <List sx={{ padding: "8px 16px" }} component="div">
+          {denomError && (
+            <p className="text-xs text-red-500 mt-1">Min must be less than Max</p>
+          )}
+        </div>
+      </div>
+
+      <div className="w-full h-px bg-slate-100" />
+
+      <div>
+        <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">
+          Filter by Expiry Date
+        </h3>
+        <div className="space-y-3">
           <CaptureDate heading="From Date" />
-        </List>
-        <List sx={{ padding: "8px 16px" }} component="div">
-          <CaptureDate heading="To Date" error={expiryDateError} />
-        </List>
-      </DiscoveryHeading>
-      <List sx={{ padding: "8px 16px" }} component="div">
-        <Divider component="li" />
-        <Button
-          fullWidth
-          sx={{ color: "#fff", backgroundColor: "#3C286D", margin: "10px 0px" }}
-          variant="contained"
-          onClick={handleFilterClick}
-          focusRipple
-        >
-          Filter
-        </Button>
-        <Button
-          fullWidth
-          sx={{ color: "#fff", backgroundColor: "#3C286D", margin: "10px 0px" }}
-          variant="contained"
-          onClick={handleResetClick}
-          focusRipple
-        >
-          Reset Filter
-        </Button>
-      </List>
-    </List>
+          <CaptureDate heading="To Date" />
+        </div>
+      </div>
+
+      <div className="w-full h-px bg-slate-100" />
+
+      <div className="space-y-2">
+        <button onClick={handleFilterClick} className="btn-primary w-full justify-center">
+          Apply Filters
+        </button>
+        <button onClick={handleResetClick} className="btn-ghost w-full justify-center text-slate-500">
+          Reset
+        </button>
+      </div>
+    </div>
   );
 }
