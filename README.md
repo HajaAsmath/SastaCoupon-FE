@@ -82,7 +82,6 @@ We tried to use a completely modern tech stack while testing out some new techno
 # Authors
 
 - [Haja Asmath](https://www.linkedin.com/in/haja-asmath) - [GiHub](https://github.com/HajaAsmath) - [Email](mailto:asmath1997@gmail.com)
-- [Milind Chaudhari](https://www.linkedin.com/in/milind-chaudhari-6b5807129/) - [GiHub](https://github.com/Milind220397) - [Email](mailto:milind220397@gmail.com)
 
 # License
 
