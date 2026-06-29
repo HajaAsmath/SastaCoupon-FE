@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/SastaCoupon-FE/static/css/main.bdf5237e.css",
+    "main.js": "/SastaCoupon-FE/static/js/main.7b303e42.js",
+    "static/js/453.33090b2e.chunk.js": "/SastaCoupon-FE/static/js/453.33090b2e.chunk.js",
+    "static/media/error_vector.png": "/SastaCoupon-FE/static/media/error_vector.4ae61ae59123cf86b12c.png",
+    "static/media/coming_soon.jpg": "/SastaCoupon-FE/static/media/coming_soon.79ea6c04e16fb4ee96ae.jpg",
+    "static/media/PaytoneOne-Regular.ttf": "/SastaCoupon-FE/static/media/PaytoneOne-Regular.cbe5045121f3f8167fb4.ttf",
+    "static/media/Site_Icon.png": "/SastaCoupon-FE/static/media/Site_Icon.28b40d235319b53d7512.png",
+    "static/media/PatuaOne-Regular.ttf": "/SastaCoupon-FE/static/media/PatuaOne-Regular.a9f01afefe6f58c9aeb2.ttf",
+    "static/media/fail.png": "/SastaCoupon-FE/static/media/fail.8dca76718759c8c3f45a.png",
+    "index.html": "/SastaCoupon-FE/index.html",
+    "main.bdf5237e.css.map": "/SastaCoupon-FE/static/css/main.bdf5237e.css.map",
+    "main.7b303e42.js.map": "/SastaCoupon-FE/static/js/main.7b303e42.js.map",
+    "453.33090b2e.chunk.js.map": "/SastaCoupon-FE/static/js/453.33090b2e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bdf5237e.css",
+    "static/js/main.7b303e42.js"
+  ]
+}
